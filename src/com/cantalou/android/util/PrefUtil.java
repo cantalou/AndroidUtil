@@ -1,4 +1,4 @@
-package com.cantalou.test.util;
+package com.cantalou.android.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

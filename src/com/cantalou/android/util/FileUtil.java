@@ -1,4 +1,4 @@
-package com.cantalou.test.util;
+package com.cantalou.android.util;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -13,7 +13,7 @@ public class FileUtil {
 	/**
 	 * 从assets目录复制文件到指定路径
 	 *
-	 * @param context
+	 * @param context context
 	 * @param srcFileName
 	 *            复制的文件名
 	 * @param targetDir

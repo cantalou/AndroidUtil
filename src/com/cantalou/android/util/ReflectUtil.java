@@ -1,4 +1,4 @@
-package com.cantalou.test.util;
+package com.cantalou.android.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
