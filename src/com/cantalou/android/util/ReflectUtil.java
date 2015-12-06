@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
 public class ReflectUtil {
+
 	private static HashMap<String, Field> fieldCache = new HashMap<String, Field>();
 
 	private static HashMap<String, Method> methodCache = new HashMap<String, Method>();
@@ -29,7 +30,8 @@ public class ReflectUtil {
 				target = get(target, fieldName.substring(0, dotIndex));
 				fieldName = fieldName.substring(dotIndex + 1);
 			}
-			Field f = findField(target.getClass(), fieldName);
+			Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
+			Field f = findField(clazz, fieldName);
 			if (f == null) {
 				return false;
 			}
@@ -55,14 +57,15 @@ public class ReflectUtil {
 		try {
 			Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
 			int dotIndex;
-			if ((dotIndex = fieldName.indexOf(".")) != -1) {
-				Field f = findField(clazz, fieldName.substring(0, dotIndex));
-				f.setAccessible(true);
-				return get(Modifier.isStatic(f.getModifiers()) ? f.getType() : f.get(target), fieldName.substring(dotIndex + 1));
-			} else {
+			if ((dotIndex = fieldName.indexOf(".")) == -1) {
 				Field f = findField(clazz, fieldName);
 				f.setAccessible(true);
 				return (T) f.get(Modifier.isStatic(f.getModifiers()) ? null : target);
+			} else {
+				Field f = findField(clazz, fieldName.substring(0, dotIndex));
+				f.setAccessible(true);
+				return get(f.get(Modifier.isStatic(f.getModifiers()) ? null : target), fieldName.substring(dotIndex + 1));
+
 			}
 		} catch (Exception e) {
 			Log.e(e);
@@ -70,54 +73,123 @@ public class ReflectUtil {
 		return null;
 	}
 
-	public static <T> T invoke(Object target, String methodName, Class<?>... paramsType) {
-		return invoke(target, methodName, paramsType, new Object[0]);
+	/**
+	 * 反射调用target对象的methodName方法
+	 * 
+	 * @param target
+	 *            对象
+	 * @param methodName
+	 *            方法名称
+	 * @param paramsType
+	 *            参数类型
+	 * @return 调用结果
+	 */
+	public static <T> T invoke(Object target, String methodName, Class<?>... paramsTypes) {
+		return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][] { paramsTypes } : null);
 	}
 
-	public static <T> T invoke(Object target, String methodName, Class<?> paramsType, Object... args) {
-		return invoke(target, methodName, new Class<?>[] { paramsType }, args);
+	/**
+	 * 反射调用target对象的methodName方法
+	 * 
+	 * @param target
+	 *            对象
+	 * @param methodName
+	 *            方法名称
+	 * @param paramsType
+	 *            参数类型
+	 * @param args
+	 *            参数
+	 * @return 调用结果
+	 */
+	public static <T> T invoke(Object target, String methodName, Class<?>[] paramsTypes, Object... args) {
+		return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][] { paramsTypes } : null,
+				args != null && args.length > 0 ? new Object[][] { args } : null);
 	}
 
-	public static <T> T invoke(Object target, String methodName, Class<?>[] paramsType, Object... args) {
+	/**
+	 * 反射调用target对象的methodName方法, 方法支持链式调用,methodName如:method1.method2.method3
+	 * 
+	 * @param target
+	 *            对象
+	 * @param methodName
+	 *            方法名称
+	 * @param paramsType
+	 *            参数类型
+	 * @param args
+	 *            参数
+	 * @return 调用结果
+	 */
+	public static <T> T invoke(Object target, String methodName, Class<?>[][] paramsTypes, Object[]... args) {
+		if (paramsTypes != null && paramsTypes.length > 0 && paramsTypes.length != countDot(methodName) + 1) {
+			throw new IllegalArgumentException("chain method count does not match the paramsTypes length");
+		}
+		if (paramsTypes != null && args != null && paramsTypes.length != args.length) {
+			throw new IllegalArgumentException("paramsTypes length does not match the args length");
+		}
 		try {
-			Method m = findMethod(target.getClass(), methodName, paramsType);
-			if (m == null) {
-				return null;
+			String[] methodNames;
+			if (methodName.indexOf('.') > 0) {
+				methodNames = methodName.split("\\.");
+			} else {
+				methodNames = new String[] { methodName };
 			}
-			m.setAccessible(true);
-			return (T) m.invoke(target, args);
+			for (int i = 0; i < methodNames.length; i++) {
+				Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
+				Method m = findMethod(clazz, methodNames[i], paramsTypes != null && paramsTypes.length  > i ? paramsTypes[i] : null);
+				m.setAccessible(true);
+				target = (T) m.invoke(Modifier.isStatic(m.getModifiers()) ? null : target, args != null && args.length > i ? args[i]
+						: null);
+			}
+			return (T) target;
 		} catch (Exception e) {
 			Log.e(e);
 		}
 		return null;
 	}
 
-	public static <T> T invoke(Class<?> clazz, String methodName, Class<?>[] paramsType, Object... args) {
-		try {
-			Method m = findMethod(clazz, methodName, paramsType);
-			if (m == null) {
-				return null;
-			}
-			m.setAccessible(true);
-			return (T) m.invoke(null, args);
-		} catch (Exception e) {
-			Log.e(e);
+	/**
+	 * 统计字符串中"."字符的个数
+	 * 
+	 * @param str
+	 *            统计字符串
+	 * @return 点个数
+	 */
+	private static int countDot(String str) {
+		int index = 0;
+		if (StringUtils.isBlank(str) || (index = str.indexOf('.')) == -1) {
+			return 0;
 		}
-		return null;
+		int count = 1;
+		char[] content = str.toCharArray();
+		for (int i = index + 1; i < content.length; i++) {
+			if (content[i] == '.') {
+				count++;
+			}
+		}
+		return count;
 	}
 
-	private static Method findMethod(Class<?> target, String methodName, Class<?>... paramsType) {
+	private static Method findMethod(Class<?> target, String methodName, Class<?>... paramsTypes) {
 		if (target == null || StringUtils.isBlank(methodName)) {
 			return null;
 		}
 
-		Method result = methodCache.get(target.getSimpleName() + methodName);
+		String key = target.getSimpleName() + methodName;
+		if (paramsTypes != null) {
+			StringBuilder sb = new StringBuilder(key);
+			for (Class<?> paramsType : paramsTypes) {
+				sb.append(paramsType.getSimpleName());
+			}
+			key = sb.toString();
+		}
+		Method result = methodCache.get(key);
+
 		// public
 		if (result == null) {
 			try {
-				result = target.getMethod(methodName, paramsType);
+				result = target.getMethod(methodName, paramsTypes);
 			} catch (Exception e) {
-				//ignore
+				// ignore
 			}
 		}
 
@@ -125,7 +197,7 @@ public class ReflectUtil {
 		if (result == null) {
 			while (result == null && target != null) {
 				try {
-					result = target.getDeclaredMethod(methodName, paramsType);
+					result = target.getDeclaredMethod(methodName, paramsTypes);
 				} catch (Exception e) {
 					target = target.getSuperclass();
 				}
