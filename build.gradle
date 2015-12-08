@@ -19,11 +19,11 @@ android {
         minSdkVersion 9
         targetSdkVersion 18
     }
-    
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src', 'src']
+            java.srcDirs = ['src']
         }
     }
 
@@ -41,8 +41,6 @@ android {
     }
 }
 
-
 // this script was used to upload files to bintray.
-//apply from: 'https://raw.githubusercontent.com/msdx/gradle-publish/master/bintray.gradle'
+//apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray.gradle'
 apply from: './bintray.gradle'
-//apply from: './maven_push.gradle'
