@@ -100,9 +100,33 @@ public class Log {
      * @param msg
      *            日志内容
      */
+    public static void i(String msg, Object... formatArgs) {
+	if (logEnable) {
+	    log(INFO, null, msg, formatArgs);
+	}
+    }
+
+    /**
+     * 输出调试信息,支持"{}"占位符
+     *
+     * @param msg
+     *            日志内容
+     */
     public static void d(String msg, Object... formatArgs) {
 	if (logEnable) {
 	    log(DEBUG, null, msg, formatArgs);
+	}
+    }
+
+    /**
+     * 输出调试信息,支持"{}"占位符
+     *
+     * @param msg
+     *            日志内容
+     */
+    public static void v(String msg, Object... formatArgs) {
+	if (logEnable) {
+	    log(VERBOSE, null, msg, formatArgs);
 	}
     }
 
