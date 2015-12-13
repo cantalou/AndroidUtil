@@ -141,7 +141,7 @@ public class Log {
 	    return;
 	}
 
-	StackTraceElement ste = Thread.currentThread().getStackTrace()[2];
+	StackTraceElement ste = Thread.currentThread().getStackTrace()[4];
 	String className = ste.getClassName();
 	int dotIndex = className.lastIndexOf('.');
 	String simpleClassName = dotIndex != -1 ? className.substring(dotIndex + 1) : className;

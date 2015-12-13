@@ -33,6 +33,7 @@ public class ReflectUtil {
 			Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
 			Field f = findField(clazz, fieldName);
 			if (f == null) {
+				Log.d("Field:{} not found in class:{}", fieldName, clazz);
 				return false;
 			}
 			f.setAccessible(true);
@@ -59,10 +60,18 @@ public class ReflectUtil {
 			int dotIndex;
 			if ((dotIndex = fieldName.indexOf(".")) == -1) {
 				Field f = findField(clazz, fieldName);
+				if (f == null) {
+					Log.d("Field:{} not found in class:{}", fieldName, clazz);
+					return null;
+				}
 				f.setAccessible(true);
 				return (T) f.get(Modifier.isStatic(f.getModifiers()) ? null : target);
 			} else {
 				Field f = findField(clazz, fieldName.substring(0, dotIndex));
+				if (f == null) {
+					Log.d("Field:{} not found in class:{}", fieldName, clazz);
+					return null;
+				}
 				f.setAccessible(true);
 				return get(f.get(Modifier.isStatic(f.getModifiers()) ? null : target), fieldName.substring(dotIndex + 1));
 
@@ -102,8 +111,8 @@ public class ReflectUtil {
 	 * @return 调用结果
 	 */
 	public static <T> T invoke(Object target, String methodName, Class<?>[] paramsTypes, Object... args) {
-		return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][] { paramsTypes } : null,
-				args != null && args.length > 0 ? new Object[][] { args } : null);
+		return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][] { paramsTypes } : null, args != null
+				&& args.length > 0 ? new Object[][] { args } : null);
 	}
 
 	/**
@@ -135,10 +144,13 @@ public class ReflectUtil {
 			}
 			for (int i = 0; i < methodNames.length; i++) {
 				Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
-				Method m = findMethod(clazz, methodNames[i], paramsTypes != null && paramsTypes.length  > i ? paramsTypes[i] : null);
+				Method m = findMethod(clazz, methodNames[i], paramsTypes != null && paramsTypes.length > i ? paramsTypes[i] : null);
+				if (m == null) {
+					Log.d("Method:{} not found in class:{}", methodNames[i], clazz);
+					return null;
+				}
 				m.setAccessible(true);
-				target = (T) m.invoke(Modifier.isStatic(m.getModifiers()) ? null : target, args != null && args.length > i ? args[i]
-						: null);
+				target = (T) m.invoke(Modifier.isStatic(m.getModifiers()) ? null : target, args != null && args.length > i ? args[i] : null);
 			}
 			return (T) target;
 		} catch (Exception e) {
@@ -249,16 +261,13 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * Returns a {@code Class} object which represents the class with the given
-	 * name. The name should be the name of a non-primitive class, as described
-	 * in the {@link Class class definition}. Primitive types can not be found
-	 * using this method; use {@code int.class} or {@code Integer.TYPE} instead.
+	 * Returns a {@code Class} object which represents the class with the given name. The name should be the name of a non-primitive class,
+	 * as described in the {@link Class class definition}. Primitive types can not be found using this method; use {@code int.class} or
+	 * {@code Integer.TYPE} instead.
 	 *
 	 * <p>
-	 * If the class has not yet been loaded, it is loaded and initialized first.
-	 * This is done through either the class loader of the calling class or one
-	 * of its parent class loaders. It is possible that a static initializer is
-	 * run as a result of this call.
+	 * If the class has not yet been loaded, it is loaded and initialized first. This is done through either the class loader of the calling
+	 * class or one of its parent class loaders. It is possible that a static initializer is run as a result of this call.
 	 */
 	public static Class<?> forName(String className) {
 		try {
