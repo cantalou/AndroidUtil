@@ -41,7 +41,7 @@ public class BinarySearchIntArray implements Cloneable {
 	 * Check array contains the specified key, or <code>false</code> if no such key has been made.
 	 */
 	public boolean contains(int key) {
-		return binarySearch(mKeys, 0, mSize, key) > 0;
+		return binarySearch(mKeys, 0, mSize, key) > -1;
 	}
 
 
