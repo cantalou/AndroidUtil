@@ -1,4 +1,4 @@
-package com.cantalou.android.collection;
+package com.cantalou.android.util;
 
 /**
  * BinarySearchIntArrays map integers .
