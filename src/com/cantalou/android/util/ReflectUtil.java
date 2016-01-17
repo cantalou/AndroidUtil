@@ -181,7 +181,7 @@ public class ReflectUtil {
 		return count;
 	}
 
-	private static Method findMethod(Class<?> target, String methodName, Class<?>... paramsTypes) {
+	public static Method findMethod(Class<?> target, String methodName, Class<?>... paramsTypes) {
 		if (target == null || StringUtils.isBlank(methodName)) {
 			return null;
 		}
@@ -225,7 +225,7 @@ public class ReflectUtil {
 		return result;
 	}
 
-	private static Field findField(Class<?> target, String fieldName) {
+	public static Field findField(Class<?> target, String fieldName) {
 		if (target == null || StringUtils.isBlank(fieldName)) {
 			return null;
 		}
