@@ -3,6 +3,8 @@ package com.cantalou.android.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
@@ -186,17 +188,13 @@ public class ReflectUtil {
 			return null;
 		}
 
-		String key = target.getSimpleName() + methodName;
-		if (paramsTypes != null) {
-			StringBuilder sb = new StringBuilder(key);
-			for (Class<?> paramsType : paramsTypes) {
-				sb.append(paramsType.getSimpleName());
-			}
-			key = sb.toString();
-		}
+		String key = target.getSimpleName() + methodName + Arrays.toString(paramsTypes);
 		Method result = methodCache.get(key);
+		if (result != null) {
+			return result;
+		}
 
-		// public
+		// public, interface
 		if (result == null) {
 			try {
 				result = target.getMethod(methodName, paramsTypes);
@@ -225,13 +223,57 @@ public class ReflectUtil {
 		return result;
 	}
 
+	public static Method findByMethod(Class<?> target, String methodName) {
+		if (target == null || StringUtils.isBlank(methodName)) {
+			return null;
+		}
+
+		String key = target.getSimpleName() + methodName;
+		Method result = methodCache.get(key);
+		if (result != null) {
+			return result;
+		}
+
+		ArrayList<Method> methods = new ArrayList<Method>();
+		methods.addAll(Arrays.asList(target.getMethods()));
+		// public, protected, default, private
+		if (result == null) {
+			while (result == null && target != null) {
+				try {
+					methods.addAll(Arrays.asList(target.getDeclaredMethods()));
+					for (Method m : methods) {
+						if (m.getName().equals(methodName)) {
+							result = m;
+							break;
+						}
+					}
+					methods.clear();
+				} catch (Exception e) {
+					target = target.getSuperclass();
+				}
+			}
+		}
+
+		if (result != null) {
+			synchronized (ReflectUtil.class) {
+				methodCache.put(target.getSimpleName() + methodName, result);
+			}
+		}
+
+		return result;
+	}
+
 	public static Field findField(Class<?> target, String fieldName) {
 		if (target == null || StringUtils.isBlank(fieldName)) {
 			return null;
 		}
 
 		Field result = fieldCache.get(target.getSimpleName() + fieldName);
-		// public
+		if (result != null) {
+			return result;
+		}
+
+		// public, interface
 		if (result == null) {
 			try {
 				result = target.getField(fieldName);
@@ -240,7 +282,7 @@ public class ReflectUtil {
 			}
 		}
 
-		// protected,default,private
+		// protected, default, private
 		if (result == null) {
 			while (result == null && target != null) {
 				try {
