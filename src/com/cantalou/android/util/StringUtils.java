@@ -50,7 +50,7 @@ public class StringUtils
      *
      * @param str the String to check, may be null
      * @return if the String is null, empty or whitespace
-     * @author LinZhiWei
+     * @author cantalou
      */
     public static boolean isBlank(CharSequence str)
     {
@@ -74,7 +74,7 @@ public class StringUtils
      *
      * @param str the String to check, may be null
      * @return trur if the String is not null, not empty , not whitespace
-     * @author LinZhiWei
+     * @author cantalou
      * @date 2015年5月6日 下午1:55:43
      */
     public static boolean isNotBlank(CharSequence str)
@@ -87,7 +87,7 @@ public class StringUtils
      *
      * @param str the String to check, may be null
      * @return trur if the String is not null, not empty , not whitespace
-     * @author LinZhiWei
+     * @author cantalou
      */
     public static boolean isNotBlank(EditText str)
     {

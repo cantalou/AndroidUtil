@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
  * 日志记录工具类<br>
  * 1.使用"{}"作为字符串拼接占位符
  * 
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年12月1日 上午11:15:22
  * 
  */
@@ -207,7 +207,7 @@ public class Log {
      * 
      * @param obj
      * @return 对象字符串
-     * @author LinZhiWei
+     * @author cantalou
      * @date 2015年12月1日 下午1:47:36
      */
     private static String toString(Object obj) {
