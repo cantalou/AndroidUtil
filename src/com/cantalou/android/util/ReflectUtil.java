@@ -193,7 +193,7 @@ public class ReflectUtil
      * @param args       参数
      * @return 调用结果
      */
-    public static <T> T invoke(Object target, String methodName, Object[]... args)
+    public static <T> T invokeByName(Object target, String methodName, Object[]... args)
     {
         if (StringUtils.isBlank(methodName))
         {
