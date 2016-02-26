@@ -33,8 +33,6 @@ public class Log {
      *
      * @param t
      *            错误
-     * @param msg
-     *            日志内容
      */
     public static void w(Throwable t) {
 	if (logEnable) {
