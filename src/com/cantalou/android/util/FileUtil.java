@@ -7,6 +7,13 @@ import java.io.FileOutputStream;
 import android.content.Context;
 import android.content.res.AssetManager;
 
+/**
+ * 
+ *
+ * 
+ * @author cantalou
+ * @date 2016年2月29日 上午10:55:48
+ */
 public class FileUtil {
 
     /**
@@ -20,7 +27,7 @@ public class FileUtil {
      *            目标目录
      * @param targetFileName
      *            目标文件名
-     *            
+     * 
      * @return 复制是否成功
      */
     public static boolean copyAssetsFile(Context context, String srcFileName, String targetFilePath) {

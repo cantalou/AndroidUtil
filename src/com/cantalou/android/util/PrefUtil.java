@@ -4,6 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+/**
+ * 
+ *
+ * 
+ * @author cantalou
+ * @date 2016年2月29日 上午10:56:04
+ */
 public class PrefUtil {
 
     public static void setString(Context cxt, String key, String value) {
