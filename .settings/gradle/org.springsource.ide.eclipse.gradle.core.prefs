@@ -1,5 +1,5 @@
 #org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
-#Sun Nov 29 15:10:08 CST 2015
+#Mon Feb 29 14:19:03 CST 2016
 build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;
 org.springsource.ide.eclipse.gradle.linkedresources=
-org.springsource.ide.eclipse.gradle.rootprojectloc=
+org.springsource.ide.eclipse.gradle.rootprojectloc=../AndroidTest
