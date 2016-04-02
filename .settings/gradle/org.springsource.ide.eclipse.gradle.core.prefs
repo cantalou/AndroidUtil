@@ -1,5 +1,5 @@
 #org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
-#Mon Feb 29 14:19:03 CST 2016
+#Sun Mar 27 20:56:02 CST 2016
 build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;
 org.springsource.ide.eclipse.gradle.linkedresources=
-org.springsource.ide.eclipse.gradle.rootprojectloc=../AndroidTest
+org.springsource.ide.eclipse.gradle.rootprojectloc=../androidSkinChange
