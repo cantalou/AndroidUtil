@@ -28,6 +28,8 @@ public class Log {
 
     public static final int ERROR = 6;
 
+    public static String LOG_TAG_FLAG = "";
+
     /**
      * 输出警告信息,支持"{}"占位符
      *
@@ -143,7 +145,7 @@ public class Log {
 	String className = ste.getClassName();
 	int dotIndex = className.lastIndexOf('.');
 	String simpleClassName = dotIndex != -1 ? className.substring(dotIndex + 1) : className;
-	String callerInfo = simpleClassName + "." + ste.getMethodName();
+	String callerInfo = simpleClassName + "." + ste.getMethodName() + LOG_TAG_FLAG;
 
 	if (formatArgs != null && formatArgs.length > 0) {
 	    msg = replace(msg, formatArgs);
