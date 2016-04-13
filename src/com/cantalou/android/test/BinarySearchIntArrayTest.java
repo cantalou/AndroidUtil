@@ -1,6 +1,6 @@
 package com.cantalou.android.test;
 
-import com.cantalou.android.util.BinarySearchIntArray;
+import com.cantalou.android.util.array.BinarySearchIntArray;
 
 import android.test.AndroidTestCase;
 
