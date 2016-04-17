@@ -8,8 +8,6 @@ import android.os.Build;
 
 /**
  * 
- *
- * 
  * @author cantalou
  * @date 2016年2月29日 上午10:55:07
  */
