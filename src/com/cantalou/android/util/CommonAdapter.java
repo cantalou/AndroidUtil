@@ -11,8 +11,6 @@ import android.widget.BaseAdapter;
 
 /**
  * 
- *
- * 
  * @author cantalou
  * @date 2016年2月29日 上午10:55:43
  */

@@ -17,9 +17,9 @@ package com.cantalou.android.util.array;
  */
 
 /**
- * SparseLongArrays map long to int. Unlike a normal array of longs,
- * there can be gaps in the indices. It is intended to be more efficient than
- * using a HashMap to map Longs to Integers.
+ * SparseLongArrays map long to int. Unlike a normal array of longs, there can
+ * be gaps in the indices. It is intended to be more efficient than using a
+ * HashMap to map Longs to Integers.
  */
 public class SparseLongIntArray implements Cloneable {
 
@@ -35,8 +35,8 @@ public class SparseLongIntArray implements Cloneable {
     }
 
     /**
-     * Creates a new SparseLongArray containing no mappings that will not require
-     * any additional memory allocation to store the specified number of
+     * Creates a new SparseLongArray containing no mappings that will not
+     * require any additional memory allocation to store the specified number of
      * mappings.
      */
     public SparseLongIntArray(int initialCapacity) {
@@ -106,11 +106,13 @@ public class SparseLongIntArray implements Cloneable {
      * Adds a mapping from the specified key to the specified value, replacing
      * the previous mapping from the specified key if there was one.
      */
-    public void put(long key, int value) {
+    public int put(long key, int value) {
 	int i = binarySearch(mKeys, 0, mSize, key);
 
 	if (i >= 0) {
+	    int old = mValues[i];
 	    mValues[i] = value;
+	    return old;
 	} else {
 	    i = ~i;
 
@@ -120,7 +122,8 @@ public class SparseLongIntArray implements Cloneable {
 		long[] nkeys = new long[n];
 		int[] nvalues = new int[n];
 
-		// Log.e("SparseLongArray", "grow " + mKeys.length + " to " + n);
+		// Log.e("SparseLongArray", "grow " + mKeys.length + " to " +
+		// n);
 		System.arraycopy(mKeys, 0, nkeys, 0, mKeys.length);
 		System.arraycopy(mValues, 0, nvalues, 0, mValues.length);
 
@@ -137,6 +140,7 @@ public class SparseLongIntArray implements Cloneable {
 	    mKeys[i] = key;
 	    mValues[i] = value;
 	    mSize++;
+	    return -1;
 	}
     }
 
