@@ -24,7 +24,7 @@ public final class SystemCompat {
     public static void install(Context context) {
 	
 	if (Looper.getMainLooper() != Looper.myLooper()) {
-	    throw new RuntimeException("applicationOnCreate method can only be called in the main thread");
+	    throw new RuntimeException("Method can only be called in the main thread");
 	}
 
 	Class<?> activityThreadClass = forName("android.app.ActivityThread");
