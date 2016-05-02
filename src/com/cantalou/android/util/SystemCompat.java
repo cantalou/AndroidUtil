@@ -45,8 +45,8 @@ public final class SystemCompat {
 	    return;
 	}
 
-	ProxyInstrumentation proxyInstrumentation = new ProxyInstrumentation(instrumentation);
-	if (!set(activityThread, "mInstrumentation", proxyInstrumentation)) {
+	InstrumentationWrapper instrumentationWrapper = new InstrumentationWrapper(instrumentation);
+	if (!set(activityThread, "mInstrumentation", instrumentationWrapper)) {
 	    Log.w("Fail to replace field named mInstrumentation.");
 	    return;
 	}

@@ -24,19 +24,18 @@ import android.view.View;
 import android.view.Window;
 
 /**
- * 
  *
  * @author cantalou
  * @date 2016年4月17日 下午10:53:36
  */
 @SuppressWarnings("deprecation")
-public class ProxyInstrumentation extends Instrumentation {
+public class InstrumentationWrapper extends Instrumentation {
 
     private Instrumentation target;
 
     private ActivityLifecycleManager manager;
 
-    public ProxyInstrumentation(Instrumentation target) {
+    public InstrumentationWrapper(Instrumentation target) {
 	this.target = target;
 	manager = ActivityLifecycleManager.getInstance();
     }
