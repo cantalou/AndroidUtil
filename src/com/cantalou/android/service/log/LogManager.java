@@ -1,4 +1,4 @@
-package com.cantalou.android.service;
+package com.cantalou.android.service.log;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,7 +24,7 @@ import android.text.format.DateUtils;
  * @author cantalou
  * @date 2016年6月12日 上午11:23:22
  */
-public final class LogService {
+public final class LogManager {
 
     /**
      * 日志保存路径
@@ -37,11 +37,6 @@ public final class LogService {
     private long logFileDate;
 
     /**
-     * 日志目录
-     */
-    private String logDir;
-
-    /**
      * 日志列表
      */
     private BlockingQueue<String> pendingLog = new LinkedBlockingQueue<String>();
@@ -51,7 +46,7 @@ public final class LogService {
      */
     private Thread writeLogThread;
 
-    private LogService() {
+    private LogManager() {
     }
 
     class CrashHandler implements Thread.UncaughtExceptionHandler {
@@ -116,8 +111,8 @@ public final class LogService {
                     logFile.close();
                 }
                 File logDir = Environment.getExternalStoragePublicDirectory(context.getPackageName());
-                String logFileName = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(logFileDate);
                 logDir.mkdirs();
+                String logFileName = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(logFileDate);
                 logFile = new BufferedWriter(new FileWriter(new File(logDir, logFileName), true));
             }
         } catch (Exception e) {
