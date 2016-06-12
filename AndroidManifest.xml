@@ -2,13 +2,14 @@
     package="com.cantalou.android"
     android:versionCode="1"
     android:versionName="1.0" >
-
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="21" />
-
-
-    <application android:allowBackup="true" >
+        android:targetSdkVersion="23" />
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.cantalou.android" >
+    </instrumentation>
+    <application>
+        <uses-library android:name="android.test.runner" />
     </application>
-
 </manifest>
