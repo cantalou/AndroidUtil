@@ -1,4 +1,4 @@
-package com.cantalou.android.util;
+package com.cantalou.android.util.array;
 
 /**
  * 
