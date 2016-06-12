@@ -3,6 +3,7 @@ package com.cantalou.android.util;
 import java.util.List;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.BaseAdapter;
  */
 public abstract class CommonAdapter<T> extends BaseAdapter {
 
-    private int resId;
+    private int[] resId;
 
     private LayoutInflater inflater;
 
@@ -26,52 +27,63 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     protected int currentPosition;
 
-    public CommonAdapter(int resId, List<T> data, Context cxt) {
-	super();
-	this.resId = resId;
-	this.data = data;
-	inflater = LayoutInflater.from(cxt);
+    public CommonAdapter(Context cxt, List<T> data, int... resId) {
+        super();
+        this.resId = resId;
+        this.data = data;
+        inflater = LayoutInflater.from(cxt);
     }
 
     public int getCount() {
-	return data.size();
+        return data.size();
     }
 
     public Object getItem(int position) {
-	return data.get(position);
+        return data.get(position);
     }
 
     public long getItemId(int position) {
-	return position;
+        return position;
     }
 
     public final View getView(int position, View convertView, ViewGroup parent) {
-	if (convertView == null) {
-	    convertView = inflater.inflate(resId, parent, false);
-	}
-	currentView = convertView;
-	currentPosition = position;
-	handle(data.get(position));
-	return convertView;
+        if (convertView == null) {
+            convertView = inflater.inflate(resId[getItemViewType(position)], parent, false);
+        }
+        currentView = convertView;
+        currentPosition = position;
+        handle(data.get(position));
+        return convertView;
     }
 
     @SuppressWarnings("unchecked")
     public final <E> E findViewById(int id) {
-	View result;
-	SparseArray<View> viewHolder = (SparseArray<View>) currentView.getTag();
-	if (viewHolder == null) {
-	    viewHolder = new SparseArray<View>();
-	    currentView.setTag(viewHolder);
-	}
-
-	result = viewHolder.get(id);
-	if (result == null) {
-	    result = currentView.findViewById(id);
-	    viewHolder.put(id, result);
-	}
-	return (E) result;
+        View result;
+        SparseArray<View>[] viewHolders = (SparseArray<View>[]) currentView.getTag();
+        if (viewHolders == null) {
+            viewHolders = new SparseArray[7];
+            currentView.setTag(viewHolders);
+        }
+        SparseArray<View> viewHolder = viewHolders[id & 0x00000007];
+        result = viewHolder.get(id);
+        if (result == null) {
+            result = currentView.findViewById(id);
+            viewHolder.put(id, result);
+        }
+        return (E) result;
     }
 
-    public abstract void handle(T data1);
+    public abstract void handle(T data);
 
+    /**
+     * fix bug observer may be null
+     *
+     * @param observer
+     */
+    @Override
+    public void unregisterDataSetObserver(DataSetObserver observer) {
+        if (observer != null) {
+            super.unregisterDataSetObserver(observer);
+        }
+    }
 }
