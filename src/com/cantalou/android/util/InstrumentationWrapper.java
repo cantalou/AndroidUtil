@@ -1,6 +1,6 @@
 package com.cantalou.android.util;
 
-import com.cantalou.android.service.lifecycle.ActivityLifecycleManager;
+import com.cantalou.android.manager.lifecycle.ActivityLifecycleManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

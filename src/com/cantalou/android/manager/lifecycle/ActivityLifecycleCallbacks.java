@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cantalou.android.service.lifecycle;
+package com.cantalou.android.manager.lifecycle;
 
 import android.app.Activity;
 import android.os.Bundle;

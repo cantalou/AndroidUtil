@@ -1,4 +1,4 @@
-package com.cantalou.android.service.log;
+package com.cantalou.android.manager.log;
 
 import java.io.BufferedWriter;
 import java.io.File;
