@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -139,6 +140,28 @@ public class FileUtil
         finally
         {
             close(fos);
+        }
+    }
+
+    /**
+     * 复制内容
+     *
+     * @param inFile  输入文件
+     * @param outFile 输出文件
+     */
+    public static void copyContent(File inFile, File outFile) throws IOException
+    {
+        FileOutputStream fos = null;
+        FileInputStream fis = null;
+        try
+        {
+            fis = new FileInputStream(inFile);
+            fos = new FileOutputStream(outFile);
+            copyContent(fis, fos);
+        }
+        finally
+        {
+            close(fis, fos);
         }
     }
 
