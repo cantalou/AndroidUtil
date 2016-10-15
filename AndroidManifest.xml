@@ -5,11 +5,11 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="23" />
-    <instrumentation
-        android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="com.cantalou.android" >
-    </instrumentation>
+    <!--<instrumentation-->
+        <!--android:name="android.test.InstrumentationTestRunner"-->
+        <!--android:targetPackage="com.cantalou.android" >-->
+<!--</instrumentation>-->
     <application>
-        <uses-library android:name="android.test.runner" />
+        <!--<uses-library android:name="android.test.runner" />-->
     </application>
 </manifest>

@@ -3,10 +3,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.+"
-        classpath 'com.android.tools.build:gradle:1.+'
-        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath 'com.android.tools.build:gradle:2.1.3'
     }
 }
 
@@ -42,5 +40,5 @@ android {
 }
 
 // this script was used to upload files to bintray.
-apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray_2.gradle'
 //apply from: './bintray.gradle'

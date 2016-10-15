@@ -18,8 +18,6 @@ public class LogTest extends AndroidTestCase {
     }
 
     public void testArray() {
-        assertEquals("This is a int array:[1, 2, 3]", Log.replace("This is a int array:{}", new int[] { 1, 2, 3 }));
-        assertEquals("This is a double array:[1.1, 2.2, 33.3]", Log.replace("This is a double array:{}", new double[] { 1.1, 2.2, 33.3 }));
-        Log.w("This is a string array:{}", new String[] { "String", "String", "String" });
+
     }
 }
