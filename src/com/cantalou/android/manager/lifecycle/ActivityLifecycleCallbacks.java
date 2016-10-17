@@ -14,4 +14,10 @@ public interface ActivityLifecycleCallbacks extends android.app.Application.Acti
 
     void beforeActivityOnCreate(Activity activity, Bundle savedInstanceState);
 
+    public void onBeforeActivityCreate(Activity activity, Bundle savedInstanceState);
+
+    @Override
+    public void onActivityDestroyed(Activity activity);
+
+    public void onActivityWindowFocusChanged(Activity activity);
 }

@@ -44,4 +44,13 @@ public class ActivityLifecycleCallbacksAdapter implements ActivityLifecycleCallb
     public void beforeActivityOnCreate(Activity activity, Bundle savedInstanceState) {
     }
 
+    @Override
+    public void onBeforeActivityCreate(Activity activity, Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onActivityWindowFocusChanged(Activity activity) {
+
+    }
 }
