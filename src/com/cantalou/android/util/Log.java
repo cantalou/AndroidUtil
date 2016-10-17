@@ -5,10 +5,9 @@ import java.lang.reflect.Array;
 /**
  * 日志记录工具类<br>
  * 1.使用"{}"作为字符串拼接占位符
- * 
+ *
  * @author cantalou
  * @date 2015年12月1日 上午11:15:22
- * 
  */
 public class Log {
 
@@ -31,8 +30,7 @@ public class Log {
     /**
      * 输出警告信息,支持"{}"占位符
      *
-     * @param t
-     *            错误
+     * @param t 错误
      */
     public static void w(Throwable t) {
         if (logEnable) {
@@ -43,8 +41,7 @@ public class Log {
     /**
      * 输出警告信息,支持"{}"占位符
      *
-     * @param msg
-     *            日志内容
+     * @param msg 日志内容
      */
     public static void w(String msg, Object... formatArgs) {
         if (logEnable) {
@@ -55,10 +52,8 @@ public class Log {
     /**
      * 输出警告信息,支持"{}"占位符
      *
-     * @param t
-     *            错误
-     * @param msg
-     *            日志内容
+     * @param t   错误
+     * @param msg 日志内容
      */
     public static void w(Throwable t, String msg, Object... formatArgs) {
         if (logEnable) {
@@ -69,10 +64,8 @@ public class Log {
     /**
      * 输出错误信息,支持"{}"占位符
      *
-     * @param t
-     *            错误
-     * @param msg
-     *            日志内容
+     * @param t   错误
+     * @param msg 日志内容
      */
     public static void e(Throwable t, String msg, Object... formatArgs) {
         if (logEnable) {
@@ -83,8 +76,7 @@ public class Log {
     /**
      * 输出错误信息,支持"{}"占位符
      *
-     * @param t
-     *            错误
+     * @param t 错误
      */
     public static void e(Throwable t) {
         if (logEnable) {
@@ -95,8 +87,7 @@ public class Log {
     /**
      * 输出调试信息,支持"{}"占位符
      *
-     * @param msg
-     *            日志内容
+     * @param msg 日志内容
      */
     public static void i(String msg, Object... formatArgs) {
         if (logEnable) {
@@ -107,8 +98,7 @@ public class Log {
     /**
      * 输出调试信息,支持"{}"占位符
      *
-     * @param msg
-     *            日志内容
+     * @param msg 日志内容
      */
     public static void d(String msg, Object... formatArgs) {
         if (logEnable) {
@@ -119,8 +109,7 @@ public class Log {
     /**
      * 输出调试信息,支持"{}"占位符
      *
-     * @param msg
-     *            日志内容
+     * @param msg 日志内容
      */
     public static void v(String msg, Object... formatArgs) {
         if (logEnable) {
@@ -131,8 +120,7 @@ public class Log {
     /**
      * 输出警告信息,支持"{}"占位符
      *
-     * @param msg
-     *            日志内容
+     * @param msg 日志内容
      */
     private static void log(int level, Throwable t, String msg, Object... formatArgs) {
 
@@ -160,31 +148,31 @@ public class Log {
                 msgs[i] = msg.substring(i * logLimit, end < msg.length() ? end : msg.length());
             }
         } else {
-            msgs = new String[] { msg };
+            msgs = new String[]{msg};
         }
 
         for (String toPrint : msgs) {
             switch (level) {
-            case VERBOSE: {
-                android.util.Log.v(callerInfo, toPrint, t);
-                break;
-            }
-            case DEBUG: {
-                android.util.Log.d(callerInfo, toPrint, t);
-                break;
-            }
-            case INFO: {
-                android.util.Log.i(callerInfo, toPrint, t);
-                break;
-            }
-            case WARN: {
-                android.util.Log.w(callerInfo, toPrint, t);
-                break;
-            }
-            case ERROR: {
-                android.util.Log.e(callerInfo, toPrint, t);
-                break;
-            }
+                case VERBOSE: {
+                    android.util.Log.v(callerInfo, toPrint, t);
+                    break;
+                }
+                case DEBUG: {
+                    android.util.Log.d(callerInfo, toPrint, t);
+                    break;
+                }
+                case INFO: {
+                    android.util.Log.i(callerInfo, toPrint, t);
+                    break;
+                }
+                case WARN: {
+                    android.util.Log.w(callerInfo, toPrint, t);
+                    break;
+                }
+                case ERROR: {
+                    android.util.Log.e(callerInfo, toPrint, t);
+                    break;
+                }
             }
         }
 
@@ -219,7 +207,7 @@ public class Log {
 
     /**
      * 将参数obj转化成字符串
-     * 
+     *
      * @param obj
      * @return 对象字符串
      * @author cantalou

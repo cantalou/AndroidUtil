@@ -31,7 +31,7 @@ public class SparseLongIntArray implements Cloneable {
      * Creates a new SparseLongArray containing no mappings.
      */
     public SparseLongIntArray() {
-	this(10);
+        this(10);
     }
 
     /**
@@ -40,24 +40,24 @@ public class SparseLongIntArray implements Cloneable {
      * mappings.
      */
     public SparseLongIntArray(int initialCapacity) {
-	initialCapacity = ArrayUtils.idealIntArraySize(initialCapacity);
+        initialCapacity = ArrayUtils.idealIntArraySize(initialCapacity);
 
-	mKeys = new long[initialCapacity];
-	mValues = new int[initialCapacity];
-	mSize = 0;
+        mKeys = new long[initialCapacity];
+        mValues = new int[initialCapacity];
+        mSize = 0;
     }
 
     @Override
     public SparseLongIntArray clone() {
-	SparseLongIntArray clone = null;
-	try {
-	    clone = (SparseLongIntArray) super.clone();
-	    clone.mKeys = mKeys.clone();
-	    clone.mValues = mValues.clone();
-	} catch (CloneNotSupportedException cnse) {
-	    /* ignore */
-	}
-	return clone;
+        SparseLongIntArray clone = null;
+        try {
+            clone = (SparseLongIntArray) super.clone();
+            clone.mKeys = mKeys.clone();
+            clone.mValues = mValues.clone();
+        } catch (CloneNotSupportedException cnse) {
+        /* ignore */
+        }
+        return clone;
     }
 
     /**
@@ -65,7 +65,7 @@ public class SparseLongIntArray implements Cloneable {
      * mapping has been made.
      */
     public int get(long key) {
-	return get(key, 0);
+        return get(key, 0);
     }
 
     /**
@@ -73,33 +73,33 @@ public class SparseLongIntArray implements Cloneable {
      * such mapping has been made.
      */
     public int get(long key, int valueIfKeyNotFound) {
-	int i = binarySearch(mKeys, 0, mSize, key);
+        int i = binarySearch(mKeys, 0, mSize, key);
 
-	if (i < 0) {
-	    return valueIfKeyNotFound;
-	} else {
-	    return mValues[i];
-	}
+        if (i < 0) {
+            return valueIfKeyNotFound;
+        } else {
+            return mValues[i];
+        }
     }
 
     /**
      * Removes the mapping from the specified key, if there was any.
      */
     public void delete(long key) {
-	int i = binarySearch(mKeys, 0, mSize, key);
+        int i = binarySearch(mKeys, 0, mSize, key);
 
-	if (i >= 0) {
-	    removeAt(i);
-	}
+        if (i >= 0) {
+            removeAt(i);
+        }
     }
 
     /**
      * Removes the mapping at the given index.
      */
     public void removeAt(int index) {
-	System.arraycopy(mKeys, index + 1, mKeys, index, mSize - (index + 1));
-	System.arraycopy(mValues, index + 1, mValues, index, mSize - (index + 1));
-	mSize--;
+        System.arraycopy(mKeys, index + 1, mKeys, index, mSize - (index + 1));
+        System.arraycopy(mValues, index + 1, mValues, index, mSize - (index + 1));
+        mSize--;
     }
 
     /**
@@ -107,41 +107,41 @@ public class SparseLongIntArray implements Cloneable {
      * the previous mapping from the specified key if there was one.
      */
     public int put(long key, int value) {
-	int i = binarySearch(mKeys, 0, mSize, key);
+        int i = binarySearch(mKeys, 0, mSize, key);
 
-	if (i >= 0) {
-	    int old = mValues[i];
-	    mValues[i] = value;
-	    return old;
-	} else {
-	    i = ~i;
+        if (i >= 0) {
+            int old = mValues[i];
+            mValues[i] = value;
+            return old;
+        } else {
+            i = ~i;
 
-	    if (mSize >= mKeys.length) {
-		int n = ArrayUtils.idealIntArraySize(mSize + 1);
+            if (mSize >= mKeys.length) {
+                int n = ArrayUtils.idealIntArraySize(mSize + 1);
 
-		long[] nkeys = new long[n];
-		int[] nvalues = new int[n];
+                long[] nkeys = new long[n];
+                int[] nvalues = new int[n];
 
-		// Log.e("SparseLongArray", "grow " + mKeys.length + " to " +
-		// n);
-		System.arraycopy(mKeys, 0, nkeys, 0, mKeys.length);
-		System.arraycopy(mValues, 0, nvalues, 0, mValues.length);
+                // Log.e("SparseLongArray", "grow " + mKeys.length + " to " +
+                // n);
+                System.arraycopy(mKeys, 0, nkeys, 0, mKeys.length);
+                System.arraycopy(mValues, 0, nvalues, 0, mValues.length);
 
-		mKeys = nkeys;
-		mValues = nvalues;
-	    }
+                mKeys = nkeys;
+                mValues = nvalues;
+            }
 
-	    if (mSize - i != 0) {
-		// Log.e("SparseLongArray", "move " + (mSize - i));
-		System.arraycopy(mKeys, i, mKeys, i + 1, mSize - i);
-		System.arraycopy(mValues, i, mValues, i + 1, mSize - i);
-	    }
+            if (mSize - i != 0) {
+                // Log.e("SparseLongArray", "move " + (mSize - i));
+                System.arraycopy(mKeys, i, mKeys, i + 1, mSize - i);
+                System.arraycopy(mValues, i, mValues, i + 1, mSize - i);
+            }
 
-	    mKeys[i] = key;
-	    mValues[i] = value;
-	    mSize++;
-	    return -1;
-	}
+            mKeys[i] = key;
+            mValues[i] = value;
+            mSize++;
+            return -1;
+        }
     }
 
     /**
@@ -149,7 +149,7 @@ public class SparseLongIntArray implements Cloneable {
      * currently stores.
      */
     public int size() {
-	return mSize;
+        return mSize;
     }
 
     /**
@@ -158,7 +158,7 @@ public class SparseLongIntArray implements Cloneable {
      * stores.
      */
     public long keyAt(int index) {
-	return mKeys[index];
+        return mKeys[index];
     }
 
     /**
@@ -167,7 +167,7 @@ public class SparseLongIntArray implements Cloneable {
      * stores.
      */
     public int valueAt(int index) {
-	return mValues[index];
+        return mValues[index];
     }
 
     /**
@@ -175,7 +175,7 @@ public class SparseLongIntArray implements Cloneable {
      * key, or a negative number if the specified key is not mapped.
      */
     public int indexOfKey(long key) {
-	return binarySearch(mKeys, 0, mSize, key);
+        return binarySearch(mKeys, 0, mSize, key);
     }
 
     /**
@@ -185,18 +185,18 @@ public class SparseLongIntArray implements Cloneable {
      * keys can map to the same value and this will find only one of them.
      */
     public int indexOfValue(int value) {
-	for (int i = 0; i < mSize; i++)
-	    if (mValues[i] == value)
-		return i;
+        for (int i = 0; i < mSize; i++)
+            if (mValues[i] == value)
+                return i;
 
-	return -1;
+        return -1;
     }
 
     /**
      * Removes all key-value mappings from this SparseLongArray.
      */
     public void clear() {
-	mSize = 0;
+        mSize = 0;
     }
 
     /**
@@ -204,48 +204,48 @@ public class SparseLongIntArray implements Cloneable {
      * key is greater than all existing keys in the array.
      */
     public void append(long key, int value) {
-	if (mSize != 0 && key <= mKeys[mSize - 1]) {
-	    put(key, value);
-	    return;
-	}
+        if (mSize != 0 && key <= mKeys[mSize - 1]) {
+            put(key, value);
+            return;
+        }
 
-	int pos = mSize;
-	if (pos >= mKeys.length) {
-	    int n = ArrayUtils.idealIntArraySize(pos + 1);
+        int pos = mSize;
+        if (pos >= mKeys.length) {
+            int n = ArrayUtils.idealIntArraySize(pos + 1);
 
-	    long[] nkeys = new long[n];
-	    int[] nvalues = new int[n];
+            long[] nkeys = new long[n];
+            int[] nvalues = new int[n];
 
-	    // Log.e("SparseLongArray", "grow " + mKeys.length + " to " + n);
-	    System.arraycopy(mKeys, 0, nkeys, 0, mKeys.length);
-	    System.arraycopy(mValues, 0, nvalues, 0, mValues.length);
+            // Log.e("SparseLongArray", "grow " + mKeys.length + " to " + n);
+            System.arraycopy(mKeys, 0, nkeys, 0, mKeys.length);
+            System.arraycopy(mValues, 0, nvalues, 0, mValues.length);
 
-	    mKeys = nkeys;
-	    mValues = nvalues;
-	}
+            mKeys = nkeys;
+            mValues = nvalues;
+        }
 
-	mKeys[pos] = key;
-	mValues[pos] = value;
-	mSize = pos + 1;
+        mKeys[pos] = key;
+        mValues[pos] = value;
+        mSize = pos + 1;
     }
 
     private static int binarySearch(long[] a, int start, int len, long key) {
-	int high = start + len, low = start - 1, guess;
+        int high = start + len, low = start - 1, guess;
 
-	while (high - low > 1) {
-	    guess = (high + low) / 2;
+        while (high - low > 1) {
+            guess = (high + low) / 2;
 
-	    if (a[guess] < key)
-		low = guess;
-	    else
-		high = guess;
-	}
+            if (a[guess] < key)
+                low = guess;
+            else
+                high = guess;
+        }
 
-	if (high == start + len)
-	    return ~(start + len);
-	else if (a[high] == key)
-	    return high;
-	else
-	    return ~high;
+        if (high == start + len)
+            return ~(start + len);
+        else if (a[high] == key)
+            return high;
+        else
+            return ~high;
     }
 }

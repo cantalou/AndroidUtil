@@ -1,7 +1,5 @@
 package com.cantalou.android.util;
 
-import java.util.List;
-
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.SparseArray;
@@ -10,8 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.List;
+
 /**
- * 
  * @author cantalou
  * @date 2016年2月29日 上午10:55:43
  */

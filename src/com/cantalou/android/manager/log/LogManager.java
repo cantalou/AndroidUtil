@@ -1,5 +1,11 @@
 package com.cantalou.android.manager.log;
 
+import android.content.Context;
+import android.os.Environment;
+import android.text.format.DateUtils;
+
+import com.cantalou.android.util.Log;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -9,17 +15,11 @@ import java.util.Locale;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.cantalou.android.util.Log;
-
-import android.content.Context;
-import android.os.Environment;
-import android.text.format.DateUtils;
-
 /**
  * 日志记录服务<br>
  * 1.将日志内容写入文件<br>
  * 2.记录线程Crash日志
- * 
+ *
  * @author cantalou
  * @date 2016年6月12日 上午11:23:22
  */
@@ -121,7 +121,7 @@ public final class LogManager {
 
     /**
      * 将文本日志写入文件
-     * 
+     *
      * @author cantalou
      * @date 2016年6月12日 下午5:48:28
      */

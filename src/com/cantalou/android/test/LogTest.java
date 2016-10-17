@@ -1,13 +1,10 @@
 package com.cantalou.android.test;
 
-import com.cantalou.android.util.Log;
-
 import android.test.AndroidTestCase;
 
+import com.cantalou.android.util.Log;
+
 /**
- * 
- *
- * 
  * @author cantalou
  * @date 2016年6月12日 下午1:41:13
  */

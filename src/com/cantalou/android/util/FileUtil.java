@@ -16,8 +16,7 @@ import java.io.OutputStream;
  * @author cantalou
  * @date 2016年2月29日 上午10:55:48
  */
-public class FileUtil
-{
+public class FileUtil {
 
     /**
      * 从assets目录复制文件到指定路径
@@ -27,17 +26,14 @@ public class FileUtil
      * @param targetFilePath 目标文件名
      * @return 复制是否成功
      */
-    public static boolean copyAssetsFile(Context context, String srcFileName, String targetFilePath)
-    {
+    public static boolean copyAssetsFile(Context context, String srcFileName, String targetFilePath) {
         AssetManager asm = context.getAssets();
         FileOutputStream fos = null;
         BufferedInputStream bis = null;
-        try
-        {
+        try {
             createDir(targetFilePath);
             File targetFile = new File(targetFilePath);
-            if (targetFile.exists())
-            {
+            if (targetFile.exists()) {
                 targetFile.delete();
             }
 
@@ -45,39 +41,26 @@ public class FileUtil
             fos = new FileOutputStream(targetFile);
             byte[] buffer = new byte[8 * 1024];
             int len = 0;
-            while ((len = bis.read(buffer)) != -1)
-            {
+            while ((len = bis.read(buffer)) != -1) {
                 fos.write(buffer, 0, len);
                 fos.flush();
             }
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e(e);
-        }
-        finally
-        {
-            try
-            {
-                if (bis != null)
-                {
+        } finally {
+            try {
+                if (bis != null) {
                     bis.close();
                 }
-            }
-            catch (Exception e2)
-            {
+            } catch (Exception e2) {
             }
 
-            try
-            {
-                if (fos != null)
-                {
+            try {
+                if (fos != null) {
                     fos.close();
                 }
-            }
-            catch (Exception e2)
-            {
+            } catch (Exception e2) {
             }
         }
         return false;
@@ -88,8 +71,7 @@ public class FileUtil
      *
      * @param dir
      */
-    public static void createDir(String dir)
-    {
+    public static void createDir(String dir) {
         createDir(new File(dir));
     }
 
@@ -98,10 +80,8 @@ public class FileUtil
      *
      * @param f
      */
-    public static void createDir(File f)
-    {
-        if (!f.exists())
-        {
+    public static void createDir(File f) {
+        if (!f.exists()) {
             f.mkdirs();
         }
     }
@@ -112,12 +92,10 @@ public class FileUtil
      * @param in  输入流
      * @param out 输出流
      */
-    public static void copyContent(InputStream in, OutputStream out) throws IOException
-    {
+    public static void copyContent(InputStream in, OutputStream out) throws IOException {
         byte[] buf = new byte[8096];
         int len;
-        while ((len = in.read(buf)) != -1)
-        {
+        while ((len = in.read(buf)) != -1) {
             out.write(buf, 0, len);
         }
         out.flush();
@@ -129,16 +107,12 @@ public class FileUtil
      * @param in      输入流
      * @param outFile 输出文件
      */
-    public static void copyContent(InputStream in, File outFile) throws IOException
-    {
+    public static void copyContent(InputStream in, File outFile) throws IOException {
         FileOutputStream fos = null;
-        try
-        {
+        try {
             fos = new FileOutputStream(outFile);
             copyContent(in, fos);
-        }
-        finally
-        {
+        } finally {
             close(fos);
         }
     }
@@ -149,18 +123,14 @@ public class FileUtil
      * @param inFile  输入文件
      * @param outFile 输出文件
      */
-    public static void copyContent(File inFile, File outFile) throws IOException
-    {
+    public static void copyContent(File inFile, File outFile) throws IOException {
         FileOutputStream fos = null;
         FileInputStream fis = null;
-        try
-        {
+        try {
             fis = new FileInputStream(inFile);
             fos = new FileOutputStream(outFile);
             copyContent(fis, fos);
-        }
-        finally
-        {
+        } finally {
             close(fis, fos);
         }
     }
@@ -170,20 +140,14 @@ public class FileUtil
      *
      * @param ios
      */
-    public static void close(Closeable... ios)
-    {
-        for (Closeable io : ios)
-        {
-            if (io == null)
-            {
+    public static void close(Closeable... ios) {
+        for (Closeable io : ios) {
+            if (io == null) {
                 continue;
             }
-            try
-            {
+            try {
                 io.close();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 //ignore
             }
         }

@@ -1,7 +1,5 @@
 package com.cantalou.android.util;
 
-import com.cantalou.android.manager.lifecycle.ActivityLifecycleManager;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
@@ -19,8 +17,9 @@ import android.os.PersistableBundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import com.cantalou.android.manager.lifecycle.ActivityLifecycleManager;
+
 /**
- *
  * @author cantalou
  * @date 2016年4月17日 下午10:53:36
  */
@@ -335,7 +334,7 @@ public class InstrumentationWrapper extends Instrumentation {
 
     @Override
     public Activity newActivity(Class<?> clazz, Context context, IBinder token, Application application, Intent intent, ActivityInfo info, CharSequence title, Activity parent,
-            String id, Object lastNonConfigurationInstance) throws InstantiationException, IllegalAccessException {
+                                String id, Object lastNonConfigurationInstance) throws InstantiationException, IllegalAccessException {
         return target.newActivity(clazz, context, token, application, intent, info, title, parent, id, lastNonConfigurationInstance);
     }
 
@@ -350,13 +349,13 @@ public class InstrumentationWrapper extends Instrumentation {
     }
 
     public void execStartActivities(Context who, IBinder contextThread, IBinder token, Activity activity, Intent[] intents) {
-        ReflectUtil.invoke(target, "execStartActivities", new Class<?>[] { Context.class, IBinder.class, IBinder.class, Activity.class, intents.getClass() }, who, contextThread,
+        ReflectUtil.invoke(target, "execStartActivities", new Class<?>[]{Context.class, IBinder.class, IBinder.class, Activity.class, intents.getClass()}, who, contextThread,
                 token, activity, intents);
     }
 
     @SuppressLint("NewApi")
     public ActivityResult execStartActivity(Context who, IBinder contextThread, IBinder token, Fragment fragment, Intent intent, int requestCode) {
-        return (ActivityResult) ReflectUtil.invoke(target, "execStartActivity", new Class<?>[] { Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class,
-                int.class }, who, contextThread, token, fragment, intent, requestCode);
+        return (ActivityResult) ReflectUtil.invoke(target, "execStartActivity", new Class<?>[]{Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class,
+                int.class}, who, contextThread, token, fragment, intent, requestCode);
     }
 }
