@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="345086da-b9a8-4a9d-8105-ad2eacaa054f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacks.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacksAdapter.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacksAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleManager.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/ActivityStateUtil.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/ActivityStateUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/ArrayUtils.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/array/ArrayUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/BinarySearchIntArray.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/array/BinarySearchIntArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/BinarySearchIntArrayTest.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/test/BinarySearchIntArrayTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/CommonAdapter.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/CommonAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/FileUtil.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/FileUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/InstrumentationWrapper.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/InstrumentationWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/Log.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/log/LogManager.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/manager/log/LogManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/LogTest.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/test/LogTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/PrefUtil.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/PrefUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/ReflectUtil.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/ReflectUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/RefrecUtilTest.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/test/RefrecUtilTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/SparseLongIntArray.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/array/SparseLongIntArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/StringUtils.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/util/StringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidUtil\src\com\cantalou\android\util\SystemCompat.java" afterPath="$PROJECT_DIR$/src/com/cantalou/android/manager/system/SystemCompat.java" />
     </list>
     <ignored path="AndroidUtil.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,10 +60,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1476695169033" expanded="true" signature="122369:122386" placeholder="..." />
-                <marker date="1476695169033" expanded="true" signature="122369:122404" placeholder="..." />
-                <marker date="1476695169033" expanded="true" signature="122369:122417" placeholder="..." />
-                <marker date="1476695169033" expanded="true" signature="122369:122432" placeholder="..." />
+                <marker date="1476695221932" expanded="true" signature="125956:125973" placeholder="..." />
+                <marker date="1476695221932" expanded="true" signature="125956:125991" placeholder="..." />
+                <marker date="1476695221932" expanded="true" signature="125956:126004" placeholder="..." />
+                <marker date="1476695221932" expanded="true" signature="125956:126019" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -1443,7 +1422,13 @@
       <option name="project" value="LOCAL" />
       <updated>1476694515714</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1">
+      <created>1476695232238</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1476695232238</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1523,10 +1508,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1476695169033" expanded="true" signature="122369:122386" placeholder="..." />
-            <marker date="1476695169033" expanded="true" signature="122369:122404" placeholder="..." />
-            <marker date="1476695169033" expanded="true" signature="122369:122417" placeholder="..." />
-            <marker date="1476695169033" expanded="true" signature="122369:122432" placeholder="..." />
+            <marker date="1476695221932" expanded="true" signature="125956:125973" placeholder="..." />
+            <marker date="1476695221932" expanded="true" signature="125956:125991" placeholder="..." />
+            <marker date="1476695221932" expanded="true" signature="125956:126004" placeholder="..." />
+            <marker date="1476695221932" expanded="true" signature="125956:126019" placeholder="..." />
           </folding>
         </state>
       </provider>
