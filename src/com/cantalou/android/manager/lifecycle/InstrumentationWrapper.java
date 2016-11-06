@@ -1,4 +1,4 @@
-package com.cantalou.android.util;
+package com.cantalou.android.manager.lifecycle;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.cantalou.android.manager.lifecycle.ActivityLifecycleManager;
+import com.cantalou.android.util.ReflectUtil;
 
 /**
  * @author cantalou
