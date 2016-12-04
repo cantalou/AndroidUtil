@@ -22,6 +22,8 @@ import static com.cantalou.android.util.ReflectUtil.set;
  */
 public class ActivityLifecycleManager {
 
+    private static boolean replaced;
+
     private ArrayList<ActivityLifecycleCallbacks> lifecycleCallbacks = new ArrayList<ActivityLifecycleCallbacks>();
 
     private ActivityLifecycleManager() {
@@ -132,6 +134,10 @@ public class ActivityLifecycleManager {
 
     public static void install() {
 
+        if (replaced) {
+            return;
+        }
+
         if (Looper.getMainLooper() != Looper.myLooper()) {
             throw new RuntimeException("Method can only be called in the main thread");
         }
@@ -159,5 +165,6 @@ public class ActivityLifecycleManager {
             Log.w("Fail to replace field named mInstrumentation.");
             return;
         }
+        replaced = true;
     }
 }
