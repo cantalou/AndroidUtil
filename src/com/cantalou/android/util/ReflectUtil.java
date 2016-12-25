@@ -302,6 +302,7 @@ public class ReflectUtil {
         try {
             return (Class<T>) Class.forName(className);
         } catch (ClassNotFoundException e) {
+            Log.w("ForName error {}", e);
             return null;
         }
     }
@@ -311,9 +312,13 @@ public class ReflectUtil {
         if (klass == null) {
             return null;
         }
+        return newInstance(klass, parameterTypes, params);
+    }
+
+    public static <T> T newInstance(Class clazz, Class<?>[] parameterTypes, Object... params) {
 
         try {
-            Constructor<?> constructor = klass.getConstructor(parameterTypes);
+            Constructor<?> constructor = clazz.getConstructor(parameterTypes);
             return (T) constructor.newInstance(params);
         } catch (Exception e) {
             Log.e(e);
