@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.cantalou.android.manager.lifecycle;
 
 import android.app.Activity;
@@ -132,7 +129,7 @@ public class ActivityLifecycleManager {
         return callbacks;
     }
 
-    public static void install() {
+    public void install() {
 
         if (replaced) {
             return;
@@ -160,7 +157,7 @@ public class ActivityLifecycleManager {
             return;
         }
 
-        InstrumentationWrapper instrumentationWrapper = new InstrumentationWrapper(instrumentation);
+        InstrumentationWrapper instrumentationWrapper = new InstrumentationWrapper(instrumentation, this);
         if (!set(activityThread, "mInstrumentation", instrumentationWrapper)) {
             Log.w("Fail to replace field named mInstrumentation.");
             return;

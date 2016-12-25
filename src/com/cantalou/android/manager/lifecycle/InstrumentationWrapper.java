@@ -31,9 +31,9 @@ public class InstrumentationWrapper extends Instrumentation {
 
     private ActivityLifecycleManager manager;
 
-    public InstrumentationWrapper(Instrumentation target) {
+    public InstrumentationWrapper(Instrumentation target, ActivityLifecycleManager manager) {
         this.target = target;
-        manager = ActivityLifecycleManager.getInstance();
+        this.manager = manager;
     }
 
     @Override
