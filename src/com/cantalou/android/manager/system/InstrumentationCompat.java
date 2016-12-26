@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.cantalou.android.manager.system;
 
 import android.app.Instrumentation;
@@ -22,9 +19,15 @@ import static com.cantalou.android.util.ReflectUtil.set;
  * @author cantalou
  * @date 2016年4月17日 下午10:48:05
  */
-public final class SystemCompat {
+public final class InstrumentationCompat{
+
+    private static boolean replaced;
 
     public static void install(Context context) {
+
+        if(replaced){
+            return ;
+        }
 
         if (Looper.getMainLooper() != Looper.myLooper()) {
             throw new RuntimeException("Method can only be called in the main thread");
@@ -32,7 +35,7 @@ public final class SystemCompat {
 
         Class<?> activityThreadClass = forName("android.app.ActivityThread");
         if (activityThreadClass == null) {
-            Log.w("Can not loadclass android.app.ActivityThread.");
+            Log.w("Can not load class android.app.ActivityThread.");
             return;
         }
 
@@ -48,10 +51,16 @@ public final class SystemCompat {
             return;
         }
 
+        if(instrumentation instanceof InstrumentationWrapper){
+            Log.w("Field mInstrumentation had replaced, ignore.");
+            return;
+        }
+
         InstrumentationWrapper instrumentationWrapper = new InstrumentationWrapper(instrumentation);
         if (!set(activityThread, "mInstrumentation", instrumentationWrapper)) {
             Log.w("Fail to replace field named mInstrumentation.");
             return;
         }
+        replaced = true;
     }
 }

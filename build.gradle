@@ -14,7 +14,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 18
     }
 
@@ -40,5 +40,5 @@ android {
 }
 
 // this script was used to upload files to bintray.
-apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray_2.gradle'
+//apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray_2.gradle'
 //apply from: './bintray.gradle'
