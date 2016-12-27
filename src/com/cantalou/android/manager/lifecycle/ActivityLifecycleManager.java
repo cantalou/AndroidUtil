@@ -1,12 +1,17 @@
-/**
- *
- */
 package com.cantalou.android.manager.lifecycle;
 
 import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Looper;
+import com.cantalou.android.util.Log;
 
 import java.util.ArrayList;
+
+import static com.cantalou.android.util.ReflectUtil.forName;
+import static com.cantalou.android.util.ReflectUtil.invoke;
+import static com.cantalou.android.util.ReflectUtil.set;
 
 /**
  * @author cantalou
@@ -14,9 +19,12 @@ import java.util.ArrayList;
  */
 public class ActivityLifecycleManager {
 
+    private static boolean replaced;
+
     private ArrayList<ActivityLifecycleCallbacks> lifecycleCallbacks = new ArrayList<ActivityLifecycleCallbacks>();
 
     private ActivityLifecycleManager() {
+        install();
     }
 
     static class InstanceHolder {
@@ -121,4 +129,39 @@ public class ActivityLifecycleManager {
         return callbacks;
     }
 
+    public void install() {
+
+        if (replaced) {
+            return;
+        }
+
+        if (Looper.getMainLooper() != Looper.myLooper()) {
+            throw new RuntimeException("Method can only be called in the main thread");
+        }
+
+        Class<?> activityThreadClass = forName("android.app.ActivityThread");
+        if (activityThreadClass == null) {
+            Log.w("Can not loadclass android.app.ActivityThread.");
+            return;
+        }
+
+        Object activityThread = invoke(activityThreadClass, "currentActivityThread");
+        if (activityThread == null) {
+            Log.w("Can not get ActivityThread instance.");
+            return;
+        }
+
+        Instrumentation instrumentation = invoke(activityThread, "getInstrumentation");
+        if (instrumentation == null) {
+            Log.w("Can not load class android.app.ActivityThread.");
+            return;
+        }
+
+        InstrumentationWrapper instrumentationWrapper = new InstrumentationWrapper(instrumentation, this);
+        if (!set(activityThread, "mInstrumentation", instrumentationWrapper)) {
+            Log.w("Fail to replace field named mInstrumentation.");
+            return;
+        }
+        replaced = true;
+    }
 }
