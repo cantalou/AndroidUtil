@@ -266,12 +266,31 @@ public class ReflectUtil {
         }
 
         // protected,default,private
+        Class<?> superTarget = target;
         if (result == null) {
-            while (result == null && target != null) {
+            while (result == null && superTarget != null) {
                 try {
-                    result = target.getDeclaredField(fieldName);
+                    result = superTarget.getDeclaredField(fieldName);
                 } catch (Exception e) {
-                    target = target.getSuperclass();
+                    superTarget = superTarget.getSuperclass();
+                }
+            }
+        }
+
+        if (result == null) {
+            for (Field f : target.getFields()) {
+                if (f.getName().equals(fieldName)) {
+                    result = f;
+                    break;
+                }
+            }
+        }
+
+        if (result == null) {
+            for (Field f : target.getDeclaredFields()) {
+                if (f.getName().equals(fieldName)) {
+                    result = f;
+                    break;
                 }
             }
         }
