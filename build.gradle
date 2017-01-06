@@ -41,4 +41,3 @@ android {
 
 // this script was used to upload files to bintray.
 //apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/bintray_2.gradle'
-//apply from: './bintray.gradle'
