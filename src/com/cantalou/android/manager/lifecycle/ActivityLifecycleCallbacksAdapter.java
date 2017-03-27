@@ -53,4 +53,9 @@ public class ActivityLifecycleCallbacksAdapter implements ActivityLifecycleCallb
     public void onActivityWindowFocusChanged(Activity activity) {
 
     }
+
+    @Override
+    public void onSaveInstanceState(Activity activity, Bundle outState) {
+
+    }
 }

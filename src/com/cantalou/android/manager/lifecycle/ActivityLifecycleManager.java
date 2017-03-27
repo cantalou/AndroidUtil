@@ -2,9 +2,8 @@ package com.cantalou.android.manager.lifecycle;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Looper;
+
 import com.cantalou.android.util.Log;
 
 import java.util.ArrayList;
@@ -133,10 +132,6 @@ public class ActivityLifecycleManager {
 
         if (replaced) {
             return;
-        }
-
-        if (Looper.getMainLooper() != Looper.myLooper()) {
-            throw new RuntimeException("Method can only be called in the main thread");
         }
 
         Class<?> activityThreadClass = forName("android.app.ActivityThread");

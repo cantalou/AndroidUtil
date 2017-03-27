@@ -1,6 +1,4 @@
-/**
- *
- */
+
 package com.cantalou.android.manager.lifecycle;
 
 import android.app.Activity;
@@ -12,7 +10,7 @@ import android.os.Bundle;
  */
 public interface ActivityLifecycleCallbacks extends android.app.Application.ActivityLifecycleCallbacks {
 
-    void beforeActivityOnCreate(Activity activity, Bundle savedInstanceState);
+    public void beforeActivityOnCreate(Activity activity, Bundle savedInstanceState);
 
     public void onBeforeActivityCreate(Activity activity, Bundle savedInstanceState);
 
@@ -20,4 +18,6 @@ public interface ActivityLifecycleCallbacks extends android.app.Application.Acti
     public void onActivityDestroyed(Activity activity);
 
     public void onActivityWindowFocusChanged(Activity activity);
+
+    public void onSaveInstanceState(Activity activity, Bundle outState);
 }
