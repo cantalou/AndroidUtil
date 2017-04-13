@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -14,6 +15,8 @@ public class ReflectUtil {
     private static HashMap<String, Field> fieldCache = new HashMap<String, Field>();
 
     private static HashMap<String, Method> methodCache = new HashMap<String, Method>();
+
+    private static HashSet<String> notFound = new HashSet<String>();
 
     /**
      * 给对象target的field属性设置值
@@ -211,14 +214,21 @@ public class ReflectUtil {
             return null;
         }
 
-        String key = target.getSimpleName() + methodName;
-        if (paramsTypes != null) {
+        String key = target.getName() + "." + methodName;
+        if (paramsTypes != null && paramsTypes.length > 0) {
             StringBuilder sb = new StringBuilder(key);
+            sb.append("(");
             for (Class<?> paramsType : paramsTypes) {
-                sb.append(paramsType.getSimpleName());
+                sb.append(paramsType.getSimpleName()).append(",");
             }
+            sb.replace(sb.length() - 1, sb.length(), ")");
             key = sb.toString();
         }
+
+        if (notFound.contains(key)) {
+            return null;
+        }
+
         Method result = methodCache.get(key);
 
         // public
@@ -243,7 +253,7 @@ public class ReflectUtil {
 
         if (result != null) {
             synchronized (ReflectUtil.class) {
-                methodCache.put(target.getSimpleName() + methodName, result);
+                methodCache.put(key, result);
             }
         }
 
@@ -255,7 +265,12 @@ public class ReflectUtil {
             return null;
         }
 
-        Field result = fieldCache.get(target.getSimpleName() + fieldName);
+        String key = target.getName() + "." + fieldName;
+        if (notFound.contains(key)) {
+            return null;
+        }
+
+        Field result = fieldCache.get(key);
         // public
         if (result == null) {
             try {
@@ -297,8 +312,10 @@ public class ReflectUtil {
 
         if (result != null) {
             synchronized (ReflectUtil.class) {
-                fieldCache.put(target.getSimpleName() + fieldName, result);
+                fieldCache.put(key, result);
             }
+        } else {
+            notFound.add(key);
         }
 
         return result;
