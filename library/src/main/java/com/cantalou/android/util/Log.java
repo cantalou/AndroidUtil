@@ -1,5 +1,7 @@
 package com.cantalou.android.util;
 
+import com.cantalou.android.manager.log.LogManager;
+
 import java.lang.reflect.Array;
 
 /**
@@ -174,6 +176,11 @@ public class Log {
                     break;
                 }
             }
+            StringBuilder sb = new StringBuilder(callerInfo).append(toPrint);
+            if(t != null){
+                sb.append(android.util.Log.getStackTraceString(t));
+            }
+            LogManager.getInstance().writeLog(sb.toString());
         }
 
     }

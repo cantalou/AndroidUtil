@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -45,8 +46,21 @@ public final class LogManager {
      */
     private Thread writeLogThread;
 
+    private boolean init = false;
+
+    private final int pid = android.os.Process.myPid();
+
+    private static class InstanceHolder {
+        static final LogManager INSTANCE = new LogManager();
+    }
+
     private LogManager() {
     }
+
+    public static LogManager getInstance() {
+        return InstanceHolder.INSTANCE;
+    }
+
 
     class CrashHandler implements Thread.UncaughtExceptionHandler {
 
@@ -68,10 +82,16 @@ public final class LogManager {
         }
     }
 
+    /**
+     * 初始化日志文件目录, 启动写文件线程
+     *
+     * @param context
+     */
     public void init(Context context) {
 
         new CrashHandler().replace();
-        updateLogFile(context);
+
+        final File logDir = Environment.getExternalStoragePublicDirectory(context.getPackageName());
 
         writeLogThread = new Thread(new Runnable() {
             @Override
@@ -79,6 +99,7 @@ public final class LogManager {
                 while (true) {
                     try {
                         String log = pendingLog.take();
+                        updateLogFile(logDir);
                         logFile.write(log);
                         logFile.newLine();
                     } catch (Exception e) {
@@ -91,7 +112,7 @@ public final class LogManager {
         writeLogThread.start();
     }
 
-    private void updateLogFile(Context context) {
+    private void updateLogFile(File logDir) {
         try {
             long now = System.currentTimeMillis();
             if (now - logFileDate > DateUtils.DAY_IN_MILLIS) {
@@ -109,7 +130,7 @@ public final class LogManager {
                     logFile.flush();
                     logFile.close();
                 }
-                File logDir = Environment.getExternalStoragePublicDirectory(context.getPackageName());
+
                 logDir.mkdirs();
                 String logFileName = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(logFileDate);
                 logFile = new BufferedWriter(new FileWriter(new File(logDir, logFileName), true));
@@ -126,8 +147,13 @@ public final class LogManager {
      * @date 2016年6月12日 下午5:48:28
      */
     public void writeLog(String log) {
+
+        if (!init) {
+            return;
+        }
+
         try {
-            pendingLog.put(log);
+            pendingLog.put(new SimpleDateFormat("MM-dd HH:mm:ss:SSS ").format(new Date()) + pid + " " + log);
         } catch (InterruptedException e) {
             // ignore
         }
