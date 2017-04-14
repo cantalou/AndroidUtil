@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
 public class ReflectUtil {
 
     private static HashMap<String, Field> fieldCache = new HashMap<String, Field>();
@@ -57,21 +56,40 @@ public class ReflectUtil {
         return false;
     }
 
+    /**
+     * 根据目标Field进行类型转换
+     *
+     * @param value String类型
+     * @return
+     */
     public static <T> T toType(Field f, Object value) {
-        Class<?> type = f.getType();
-        if (Integer.class.equals(type) && !(value instanceof Integer)) {
-            return (T) (value instanceof String ? Integer.parseInt((String) value) : value);
-        } else if (int.class.equals(type) && !(value instanceof Integer)) {
-            return (T) (value instanceof String ? Integer.parseInt((String) value) : value);
-        } else if (Long.class.equals(type) && !(value instanceof Long)) {
-            return (T) (value instanceof String ? Long.parseLong((String) value) : value);
-        } else if (long.class.equals(type) && !(value instanceof Long)) {
-            return (T) (value instanceof String ? Long.parseLong((String) value) : value);
-        } else if (Boolean.class.equals(type) && !(value instanceof Boolean)) {
-            return (T) (value instanceof String ? Boolean.parseBoolean((String) value) : value);
-        } else if (boolean.class.equals(type) && !(value instanceof Boolean)) {
-            return (T) (value instanceof String ? Boolean.parseBoolean((String) value) : value);
+
+        if (!(value instanceof String)) {
+            return (T) value;
         }
+
+        Class<?> type = f.getType();
+
+        if (Integer.class.equals(type) || int.class.equals(type)) {
+            return (T) (Integer) Integer.parseInt((String) value);
+        }
+
+        if (Long.class.equals(type) || long.class.equals(type)) {
+            return (T) (Long) Long.parseLong((String) value);
+        }
+
+        if (Boolean.class.equals(type) || boolean.class.equals(type)) {
+            return (T) (Boolean) Boolean.parseBoolean((String) value);
+        }
+
+        if (Float.class.equals(type) || float.class.equals(type)) {
+            return (T) (Float) Float.parseFloat((String) value);
+        }
+
+        if (Double.class.equals(type) || double.class.equals(type)) {
+            return (T) (Double) Double.parseDouble((String) value);
+        }
+
         return (T) value;
     }
 
@@ -147,10 +165,6 @@ public class ReflectUtil {
     /**
      * 反射调用target对象的methodName方法, 方法支持链式调用,methodName如:method1.method2.method3
      *
-     * @param target      对象
-     * @param methodName  方法名称
-     * @param paramsTypes 参数类型
-     * @param args        参数
      * @return 调用结果
      */
     public static <T> T invoke(Object target, String methodName, Class<?>[][] paramsTypes, Object[]... args) {
@@ -209,7 +223,13 @@ public class ReflectUtil {
         return count;
     }
 
+    /**
+     * 查找指定名称的Method对象
+     *
+     * @return
+     */
     public static Method findMethod(Class<?> target, String methodName, Class<?>... paramsTypes) {
+
         if (target == null || StringUtils.isBlank(methodName)) {
             return null;
         }
@@ -231,7 +251,7 @@ public class ReflectUtil {
 
         Method result = methodCache.get(key);
 
-        // public
+        // public method
         if (result == null) {
             try {
                 result = target.getMethod(methodName, paramsTypes);
@@ -240,27 +260,53 @@ public class ReflectUtil {
             }
         }
 
-        // protected,default,private
+        //public methods
         if (result == null) {
-            while (result == null && target != null) {
-                try {
-                    result = target.getDeclaredMethod(methodName, paramsTypes);
-                } catch (Exception e) {
-                    target = target.getSuperclass();
+            for (Method method : target.getMethods()) {
+                if (methodName.equals(method.getName())) {
+                    result = method;
+                    break;
                 }
             }
+        }
+
+        // protected,default,private methods
+        while (result == null && target != null) {
+            try {
+                result = target.getDeclaredMethod(methodName, paramsTypes);
+                if (result == null) {
+                    for (Method method : target.getDeclaredMethods()) {
+                        if (methodName.equals(method.getName())) {
+                            result = method;
+                            break;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+            target = target.getSuperclass();
         }
 
         if (result != null) {
             synchronized (ReflectUtil.class) {
                 methodCache.put(key, result);
             }
+        } else {
+            notFound.add(key);
         }
 
         return result;
     }
 
+    /**
+     * 查找指定名称的
+     *
+     * @param target
+     * @param fieldName
+     * @return
+     */
     public static Field findField(Class<?> target, String fieldName) {
+
         if (target == null || StringUtils.isBlank(fieldName)) {
             return null;
         }
@@ -271,7 +317,8 @@ public class ReflectUtil {
         }
 
         Field result = fieldCache.get(key);
-        // public
+
+        // public field
         if (result == null) {
             try {
                 result = target.getField(fieldName);
@@ -280,34 +327,32 @@ public class ReflectUtil {
             }
         }
 
-        // protected,default,private
-        Class<?> superTarget = target;
+        //public fields
         if (result == null) {
-            while (result == null && superTarget != null) {
-                try {
-                    result = superTarget.getDeclaredField(fieldName);
-                } catch (Exception e) {
-                    superTarget = superTarget.getSuperclass();
-                }
-            }
-        }
-
-        if (result == null) {
-            for (Field f : target.getFields()) {
-                if (f.getName().equals(fieldName)) {
-                    result = f;
+            Field[] fields = target.getFields();
+            for (Field field : fields) {
+                if (fieldName.equals(field.getName())) {
+                    result = field;
                     break;
                 }
             }
         }
 
-        if (result == null) {
-            for (Field f : target.getDeclaredFields()) {
-                if (f.getName().equals(fieldName)) {
-                    result = f;
-                    break;
+        // protected, default, private
+        while (result == null && target != null) {
+            try {
+                result = target.getDeclaredField(fieldName);
+                if (result == null) {
+                    for (Field field : target.getDeclaredFields()) {
+                        if (fieldName.equals(field.getName())) {
+                            result = field;
+                            break;
+                        }
+                    }
                 }
+            } catch (Exception e) {
             }
+            target = target.getSuperclass();
         }
 
         if (result != null) {
