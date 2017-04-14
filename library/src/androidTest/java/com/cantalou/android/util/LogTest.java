@@ -1,4 +1,4 @@
-package com.cantalou.android.test;
+package com.cantalou.android.util;
 
 import android.test.AndroidTestCase;
 

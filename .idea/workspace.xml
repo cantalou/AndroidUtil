@@ -5,56 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="345086da-b9a8-4a9d-8105-ad2eacaa054f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/androidTest/java/cantalou/com/app/ExampleInstrumentedTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/test/java/cantalou/com/app/ExampleUnitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/proguard-rules.pro" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/src/androidTest/java/com/canatlou/android/util/ExampleInstrumentedTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/library/src/test/java/com/canatlou/android/util/ExampleUnitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/library/src/androidTest/java/com/canatlou/android/util/ExampleInstrumentedTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidUtil.iml" afterPath="$PROJECT_DIR$/AndroidUtil.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/library/gradle.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/devicematch/BuildPattern.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/devicematch/BuildPattern.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/devicematch/DeviceMatchManager.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/devicematch/DeviceMatchManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/devicematch/Matcher.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/devicematch/Matcher.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/devicematch/impl/CancelActionBarItemLongClickMatcher.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/devicematch/impl/CancelActionBarItemLongClickMatcher.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/devicematch/impl/HardwareAccelerateMatcher.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/devicematch/impl/HardwareAccelerateMatcher.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacks.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacks.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacksAdapter.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/lifecycle/ActivityLifecycleCallbacksAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/ActivityLifecycleManager.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/lifecycle/ActivityLifecycleManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/lifecycle/InstrumentationWrapper.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/lifecycle/InstrumentationWrapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/manager/log/LogManager.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/manager/log/LogManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/BinarySearchIntArrayTest.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/BinarySearchIntArrayTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/LogTest.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/LogTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/test/RefrecUtilTest.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/RefrecUtilTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/ActivityStateUtil.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ActivityStateUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/BitmapUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/BitmapUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/CommonAdapter.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/CommonAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/DeviceUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/DeviceUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/FileUtil.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/FileUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/Log.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/Log.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/NetworkUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/NetworkUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/PrefUtil.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/PrefUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/ReflectUtil.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/StringUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/StringUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/ViewUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ViewUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/ArrayUtils.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/array/ArrayUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/BinarySearchIntArray.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/array/BinarySearchIntArray.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/cantalou/android/util/array/SparseLongIntArray.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/array/SparseLongIntArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java" afterPath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/BinarySearchIntArrayTest.java" afterPath="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/BinarySearchIntArrayTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/LogTest.java" afterPath="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/LogTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/test/RefrecUtilTest.java" afterPath="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/ReflectUtilTest.java" />
     </list>
     <ignored path="AndroidUtil.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,6 +50,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2697,6 +2661,12 @@
         <option value="$PROJECT_DIR$/library/build.gradle" />
         <option value="$PROJECT_DIR$/library/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/gradle.properties" />
+        <option value="$PROJECT_DIR$/library/src/androidTest/java/com/canatlou/android/util/ExampleInstrumentedTest.java" />
+        <option value="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/ReflectUtilTest.java" />
+        <option value="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/RefrectUtilTest.java" />
+        <option value="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/RefrecUtilTest.java" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java" />
+        <option value="$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/BinarySearchIntArrayTest.java" />
       </list>
     </option>
   </component>
@@ -2750,6 +2720,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidUtil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidUtil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView">
@@ -2776,11 +2760,22 @@
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="192.168.137.101:5555" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/library/src/androidTest/java/com" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.cantalou.android.util" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\AndroidUtil\library" />
       <recent name="D:\workspace\AndroidUtil\library\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.cantalou.android.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.cantalou.android.util" />
@@ -2789,7 +2784,7 @@
       <recent name="D:\workspace\AndroidUtil\src\com\cantalou\android\manager" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Instrumented Tests.useAppContext()">
+  <component name="RunManager" selected="Android Instrumented Tests.Tests in 'com.cantalou.android.util'">
     <configuration default="false" name="useAppContext()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
       <module name="library" />
       <option name="TESTING_TYPE" value="3" />
@@ -2797,6 +2792,198 @@
       <option name="METHOD_NAME" value="useAppContext" />
       <option name="CLASS_NAME" value="com.canatlou.android.util.ExampleInstrumentedTest" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="ReflectUtilTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="com.cantalou.android.util.ReflectUtilTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="get()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="get" />
+      <option name="CLASS_NAME" value="com.cantalou.android.util.ReflectUtilTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="testPutContains()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="testPutContains" />
+      <option name="CLASS_NAME" value="com.cantalou.android.util.BinarySearchIntArrayTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="Tests in 'com.cantalou.android.util'" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <option name="TESTING_TYPE" value="1" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="com.cantalou.android.util" />
       <option name="EXTRA_OPTIONS" value="" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -3075,12 +3262,20 @@
       <listeners />
       <method />
     </configuration>
-    <list size="1">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.useAppContext()" />
+      <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.ReflectUtilTest" />
+      <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.get()" />
+      <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.testPutContains()" />
+      <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.Tests in 'com.cantalou.android.util'" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.useAppContext()" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.Tests in 'com.cantalou.android.util'" />
+        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.testPutContains()" />
+        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.ReflectUtilTest" />
+        <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.get()" />
+        <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.useAppContext()" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -3207,33 +3402,72 @@
       <option name="project" value="LOCAL" />
       <updated>1476700446570</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1.修改项目结构">
+      <created>1492148529265</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1492148529265</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="ReflectUtilTest - 2017.04.14 at 13h 50m 45s.xml">
+      <configuration name="ReflectUtilTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="ReflectUtilTest - 2017.04.14 at 13h 58m 05s.xml">
+      <configuration name="ReflectUtilTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Tests_in_'com_cantalou_android_util' - 2017.04.14 at 14h 17m 33s.xml">
+      <configuration name="Tests in 'com.cantalou.android.util'" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="get() - 2017.04.14 at 13h 54m 24s.xml">
+      <configuration name="get()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="get() - 2017.04.14 at 13h 56m 24s.xml">
+      <configuration name="get()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="get() - 2017.04.14 at 13h 57m 50s.xml">
+      <configuration name="get()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="testPutContains() - 2017.04.14 at 14h 16m 41s.xml">
+      <configuration name="testPutContains()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="testPutContains() - 2017.04.14 at 14h 17m 21s.xml">
+      <configuration name="testPutContains()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="useAppContext() - 2017.04.14 at 13h 42m 48s.xml">
+      <configuration name="useAppContext()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="useAppContext() - 2017.04.14 at 13h 43m 13s.xml">
+      <configuration name="useAppContext()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26309922" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26309922" sideWeight="0.48933902" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.73134327" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43589744" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29319954" sideWeight="0.83102345" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2742475" sideWeight="0.6513859" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43589744" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14715719" sideWeight="0.48827294" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43589744" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2153518" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2742475" sideWeight="0.34861407" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1673774" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Freeline" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972129" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3267,59 +3501,30 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="1.修改项目结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修改项目结构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/ReflectUtilTest.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ViewUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bintray.gradle" />
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ViewUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3475,13 +3680,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3501,6 +3700,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
           <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3571,26 +3771,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/build.gradle">
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/canatlou/android/util/ExampleInstrumentedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        <state relative-caret-position="324">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
+    <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/RefrecUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+        <state relative-caret-position="401">
+          <caret line="105" column="109" selection-start-line="105" selection-start-column="109" selection-end-line="105" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/RefrecUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/ReflectUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <element signature="class#Inner#0;class#ReflectUtilTest#0" expanded="true" />
+            <element signature="class#Outer#0;class#ReflectUtilTest#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/LogTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/androidTest/java/com/cantalou/android/util/BinarySearchIntArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/cantalou/android/util/ReflectUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="112" column="65" selection-start-line="112" selection-start-column="65" selection-end-line="112" selection-end-column="65" />
           <folding />
         </state>
       </provider>

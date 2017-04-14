@@ -1,15 +1,20 @@
-package com.cantalou.android.test;
+package com.cantalou.android.util;
 
 import android.test.AndroidTestCase;
 
 import com.cantalou.android.util.array.BinarySearchIntArray;
 
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
 /**
  * @author cantalou
  * @date 2016年2月29日 上午10:54:50
  */
-public class BinarySearchIntArrayTest extends AndroidTestCase {
+public class BinarySearchIntArrayTest{
 
+    @Test
     public void testPutContains() {
         BinarySearchIntArray array = new BinarySearchIntArray();
         array.put(1);

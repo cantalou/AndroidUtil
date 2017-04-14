@@ -114,10 +114,6 @@ public class ReflectUtil {
                     return null;
                 }
                 boolean isStatic = Modifier.isStatic(f.getModifiers());
-                if (isStatic && clazz != target) {
-                    Log.w("Can not get a instance field:{} from class object :{}", fieldName, clazz);
-                    return null;
-                }
                 f.setAccessible(true);
                 return (T) f.get(isStatic ? null : target);
             } else {

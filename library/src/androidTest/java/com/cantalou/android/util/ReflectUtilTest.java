@@ -1,16 +1,22 @@
-package com.cantalou.android.test;
+package com.cantalou.android.util;
 
-import android.test.AndroidTestCase;
+import org.junit.Test;
 
-import com.cantalou.android.util.ReflectUtil;
+import static org.junit.Assert.*;
 
 /**
- * RefrecUtil 测试类
+ * Project Name: AndroidUtil<p>
+ * File Name:    ReflectUtilTest.java<p>
+ * ClassName:    ReflectUtilTest<p>
+ * <p>
+ * TODO.
  *
- * @author cantalou
- * @date 2015年12月5日 下午7:00:30
+ * @author LinZhiWei
+ * @date 2017年04月14日 13:47
+ * <p>
+ * Copyright (c) 2017年, 4399 Network CO.ltd. All Rights Reserved.
  */
-public class RefrecUtilTest extends AndroidTestCase {
+public class ReflectUtilTest {
 
     static class Inner {
         String str;
@@ -53,7 +59,9 @@ public class RefrecUtilTest extends AndroidTestCase {
         }
     }
 
-    public void testSet() {
+
+    @Test
+    public void set() throws Exception {
 
         Outer out = new Outer();
 
@@ -70,8 +78,8 @@ public class RefrecUtilTest extends AndroidTestCase {
         assertEquals("staticInnerStr", Outer.staticInner.str);
     }
 
-    public void testGet() {
-
+    @Test
+    public void get() throws Exception {
         Outer out = new Outer();
         out.str = "str";
         Outer.staticStr = "staticStr";
@@ -86,12 +94,8 @@ public class RefrecUtilTest extends AndroidTestCase {
         assertEquals("staticInnerStr", ReflectUtil.get(out, "staticInner.str"));
     }
 
-    /**
-     * Test method for {@link
-     * com.cantalou.android.util.ReflectUtil#invoke(java.lang.Object,
-     * java.lang.String, java.lang.Class<?>[])}.
-     */
-    public void testInvokeObjectStringClassOfQArray() {
+    @Test
+    public void invoke() throws Exception {
 
         Outer out = new Outer();
         assertEquals("outerMethod", ReflectUtil.invoke(out, "outerMethod"));
@@ -100,14 +104,51 @@ public class RefrecUtilTest extends AndroidTestCase {
         assertEquals("staticOuterMethod1", ReflectUtil.invoke(out, "staticOuterMethod", new Class[]{String.class}, "1"));
         assertEquals("innerMethod", ReflectUtil.invoke(out, "getStaticInnerMethod.innerMethod"));
         assertEquals("staticInnerMethod", ReflectUtil.invoke(out, "getStaticInnerMethod.staticInnerMethod"));
+    }
+
+    @Test
+    public void invoke1() throws Exception {
 
     }
 
-    /**
-     * Test method for {@link
-     * com.cantalou.android.util.ReflectUtil#invoke(java.lang.Object,
-     * java.lang.String, java.lang.Class<?>[], java.lang.Object[])}.
-     */
-    public void testInvokeObjectStringClassOfQArrayObjectArray() {
+    @Test
+    public void invoke2() throws Exception {
+
     }
+
+    @Test
+    public void findMethod() throws Exception {
+
+    }
+
+    @Test
+    public void findField() throws Exception {
+
+    }
+
+    @Test
+    public void forName() throws Exception {
+
+    }
+
+    @Test
+    public void newInstance() throws Exception {
+
+    }
+
+    @Test
+    public void newInstance1() throws Exception {
+
+    }
+
+    @Test
+    public void newInstance2() throws Exception {
+
+    }
+
+    @Test
+    public void findAllFieldValue() throws Exception {
+
+    }
+
 }
