@@ -1,21 +1,30 @@
 package com.cantalou.android.util;
 
+import android.util.SparseArray;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 
 public class ReflectUtil {
 
-    private static HashMap<String, Field> fieldCache = new HashMap<String, Field>();
+    private static Map<String, Field> fieldCache = new HashMap<String, Field>();
 
-    private static HashMap<String, Method> methodCache = new HashMap<String, Method>();
+    private static SparseArray<Method> methodCache = new SparseArray();
 
+    private static SparseArray<Object> methodNotFound = new SparseArray();
+
+    //    private static HashMap<String ,Method> methodCache = new HashMap<String ,Method>();
     private static HashSet<String> notFound = new HashSet<String>();
+
+    private static Class<?>[] primitiveType = new Class[]{byte.class, short.class, char.class, short.class, int.class, float.class, long.class, double.class};
+
+    private static Class<?>[] wrapperType = new Class[]{Byte.class, Short.class, Character.class, Short.class, Integer.class, Float.class, Long.class, Double.class};
 
     /**
      * 给对象target的field属性设置值
@@ -133,15 +142,23 @@ public class ReflectUtil {
     }
 
     /**
-     * 反射调用target对象的methodName方法
+     * 反射调用target对象的methodName方法, 方法支持链式调用,methodName如:method1.method2.method3
      *
-     * @param target      对象
-     * @param methodName  方法名称
-     * @param paramsTypes 参数类型
-     * @return 调用结果
+     * @param target
+     * @param methodName
+     * @param params
+     * @return 方法执行结果
      */
-    public static <T> T invoke(Object target, String methodName, Class<?>... paramsTypes) {
-        return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][]{paramsTypes} : null);
+    public static <T> T invoke(Object target, String methodName, Object... params) {
+        if (params.length > 0) {
+            Class<?>[] paramsTypes = new Class<?>[params.length];
+            for (int i = 0; i < params.length; i++) {
+                paramsTypes[i] = params[i].getClass();
+            }
+            return invokeImpl(target, methodName, new Class<?>[][]{paramsTypes}, new Object[][]{params});
+        } else {
+            return invokeImpl(target, methodName, null);
+        }
     }
 
     /**
@@ -154,8 +171,11 @@ public class ReflectUtil {
      * @return 调用结果
      */
     public static <T> T invoke(Object target, String methodName, Class<?>[] paramsTypes, Object... args) {
-        return invoke(target, methodName, paramsTypes != null && paramsTypes.length > 0 ? new Class<?>[][]{paramsTypes} : null,
-                args != null && args.length > 0 ? new Object[][]{args} : null);
+        if (paramsTypes != null) {
+            return invokeImpl(target, methodName, new Class<?>[][]{paramsTypes}, new Object[][]{args});
+        } else {
+            return invokeImpl(target, methodName, null);
+        }
     }
 
     /**
@@ -163,7 +183,7 @@ public class ReflectUtil {
      *
      * @return 调用结果
      */
-    public static <T> T invoke(Object target, String methodName, Class<?>[][] paramsTypes, Object[]... args) {
+    public static <T> T invokeImpl(Object target, String methodName, Class<?>[][] paramsTypes, Object[]... args) {
         if (target == null) {
             return null;
         }
@@ -183,13 +203,13 @@ public class ReflectUtil {
             }
             for (int i = 0; i < methodNames.length; i++) {
                 Class<?> clazz = target instanceof Class ? (Class<?>) target : target.getClass();
-                Method m = findMethod(clazz, methodNames[i], paramsTypes != null && paramsTypes.length > i ? paramsTypes[i] : null);
+                Method m = findMethod(clazz, methodNames[i], paramsTypes != null && paramsTypes.length > i ? paramsTypes[i] : new Class[]{});
                 if (m == null) {
                     Log.d("Method:{} not found in class:{}", methodNames[i], clazz);
                     return null;
                 }
                 m.setAccessible(true);
-                target = (T) m.invoke(Modifier.isStatic(m.getModifiers()) ? null : target, args != null && args.length > i ? args[i] : null);
+                target = (T) m.invoke(target, args != null && args.length > i ? args[i] : null);
             }
             return (T) target;
         } catch (Exception e) {
@@ -198,6 +218,7 @@ public class ReflectUtil {
         return null;
     }
 
+
     /**
      * 统计字符串中"."字符的个数
      *
@@ -205,7 +226,7 @@ public class ReflectUtil {
      * @return 点个数
      */
     private static int countDot(String str) {
-        int index = 0;
+        int index;
         if (StringUtils.isBlank(str) || (index = str.indexOf('.')) == -1) {
             return 0;
         }
@@ -224,74 +245,114 @@ public class ReflectUtil {
      *
      * @return
      */
-    public static Method findMethod(Class<?> target, String methodName, Class<?>... paramsTypes) {
+    public static Method findMethod(Class<?> clazz, String methodName, Class<?>... paramsTypes) {
 
-        if (target == null || StringUtils.isBlank(methodName)) {
+        if (clazz == null || StringUtils.isBlank(methodName)) {
             return null;
         }
 
-        String key = target.getName() + "." + methodName;
-        if (paramsTypes != null && paramsTypes.length > 0) {
-            StringBuilder sb = new StringBuilder(key);
-            sb.append("(");
-            for (Class<?> paramsType : paramsTypes) {
-                sb.append(paramsType.getSimpleName()).append(",");
-            }
-            sb.replace(sb.length() - 1, sb.length(), ")");
-            key = sb.toString();
-        }
-
-        if (notFound.contains(key)) {
-            return null;
+        int key = clazz.hashCode() ^ (methodName.hashCode() * 131);
+        for (Class<?> paramsType : paramsTypes) {
+            key ^= (paramsType.hashCode() * 131);
         }
 
         Method result = methodCache.get(key);
+        if (result != null && methodName.equals(result.getName())) {
+            return result;
+        }
 
-        // public method
+        if (methodNotFound.get(key) != null) {
+            return null;
+        }
+
+        // public method(include interface superClass)
         if (result == null) {
             try {
-                result = target.getMethod(methodName, paramsTypes);
+                result = clazz.getMethod(methodName, paramsTypes);
             } catch (Exception e) {
-                // ignore
             }
         }
 
-        //public methods
+        // protected,default,private methods(include superClass)
+        Class superClazz = clazz;
+        while (result == null && superClazz != null) {
+            try {
+                result = clazz.getDeclaredMethod(methodName, paramsTypes);
+                if (result != null) {
+                    break;
+                }
+            } catch (Exception e) {
+            }
+            superClazz = superClazz.getSuperclass();
+        }
+
+        //fuzzy public methods (include interface superClass)
         if (result == null) {
-            for (Method method : target.getMethods()) {
-                if (methodName.equals(method.getName())) {
+            for (Method method : clazz.getMethods()) {
+                if (methodName.equals(method.getName()) && match(method, paramsTypes)) {
                     result = method;
                     break;
                 }
             }
         }
 
-        // protected,default,private methods
-        while (result == null && target != null) {
+        //fuzzy protected,default,private methods(include superClass)
+        superClazz = clazz;
+        while (result == null && superClazz != null) {
             try {
-                result = target.getDeclaredMethod(methodName, paramsTypes);
-                if (result == null) {
-                    for (Method method : target.getDeclaredMethods()) {
-                        if (methodName.equals(method.getName())) {
-                            result = method;
-                            break;
-                        }
+                for (Method method : clazz.getDeclaredMethods()) {
+                    if (methodName.equals(method.getName()) && match(method, paramsTypes)) {
+                        result = method;
+                        break;
                     }
                 }
             } catch (Exception e) {
             }
-            target = target.getSuperclass();
+            superClazz = superClazz.getSuperclass();
         }
+
 
         if (result != null) {
             synchronized (ReflectUtil.class) {
                 methodCache.put(key, result);
             }
         } else {
-            notFound.add(key);
+            methodNotFound.put(key, "");
         }
 
         return result;
+    }
+
+    /**
+     * Check all param <b>paramsTypes<b/> can be assign to method parameter type
+     *
+     * @param method
+     * @param paramsTypes
+     * @return
+     */
+    private static boolean match(Method method, Class<?>... paramsTypes) {
+        Class<?>[] methodParamTypes = method.getParameterTypes();
+
+        if (methodParamTypes.length != paramsTypes.length) {
+            return false;
+        }
+
+        if (paramsTypes.length == 0) {
+            return true;
+        }
+
+        for (int i = 0; i < methodParamTypes.length; i++) {
+            if (methodParamTypes[i].isPrimitive()) {
+                for (int j = 0; j < primitiveType.length; j++) {
+                    if (methodParamTypes[i] == primitiveType[j] && paramsTypes[i] != wrapperType[j]) {
+                        return false;
+                    }
+                }
+            } else if (!methodParamTypes[i].isAssignableFrom(paramsTypes[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -411,13 +472,13 @@ public class ReflectUtil {
      * @return className名称的对象
      */
     public static <T> T newInstance(String className, Object... params) {
-        Class<?> klass = forName(className);
-        if (klass == null) {
+        Class<?> clazz = forName(className);
+        if (clazz == null) {
             return null;
         }
         Constructor<?> bestConstructor = null;
         int best = -1;
-        for (Constructor<?> constructor : klass.getConstructors()) {
+        for (Constructor<?> constructor : clazz.getConstructors()) {
             int match = 0;
             Class<?>[] parameterTypes = constructor.getParameterTypes();
             if (parameterTypes.length == params.length) {
@@ -448,42 +509,40 @@ public class ReflectUtil {
      * @param obj
      * @return
      */
-    public static List<Object> findAllFieldValue(Object obj) {
-        List<Object> list = null;
+    public static Map<String, ? extends Object> findAllFieldAndValue(Object obj) {
         try {
             Class<?> clazz = obj.getClass();
             Field[] fields = clazz.getDeclaredFields();
             if (fields != null && fields.length > 0) {
-                list = new ArrayList<Object>(fields.length);
+                HashMap<String, Object> nameValue = new HashMap<>(fields.length);
                 for (Field f : fields) {
                     f.setAccessible(true);
-                    list.add(f.get(obj));
+                    nameValue.put(f.getName(), f.get(obj));
                 }
+                return nameValue;
             }
         } catch (Exception e) {
             //ignore
         }
-        return list;
+        return Collections.emptyMap();
     }
 
     /**
+     * Dump all object field info
+     *
      * @param obj
-     * @return
+     * @return className, fieldName , fieldValue
      */
     public static String dumpObjectInfo(Object obj) {
-        HashMap<String, Object> fieldValue = new HashMap<String, Object>();
-        try {
-            Class<?> clazz = obj.getClass();
-            Field[] fields = clazz.getDeclaredFields();
-            if (fields != null && fields.length > 0) {
-                for (Field f : fields) {
-                    f.setAccessible(true);
-                    fieldValue.put(f.getName(), f.get(obj));
-                }
+        StringBuilder sb = new StringBuilder();
+        sb.append(obj.getClass().toString()).append("{");
+        Map<String, ? extends Object> nameValues = findAllFieldAndValue(obj);
+        if (nameValues.size() > 0) {
+            for (Map.Entry<String, ? extends Object> entry : nameValues.entrySet()) {
+                sb.append(entry.getKey()).append(",").append(entry.getValue()).append(";");
             }
-        } catch (Exception e) {
-            //ignore
         }
-        return fieldValue.toString();
+        sb.append("}");
+        return sb.toString();
     }
 }

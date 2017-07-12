@@ -1,14 +1,15 @@
 package com.cantalou.android.util;
 
-import android.test.AndroidTestCase;
+import android.support.test.runner.AndroidJUnit4;
 
-import com.cantalou.android.util.Log;
+import org.junit.runner.RunWith;
 
 /**
  * @author cantalou
  * @date 2016年6月12日 下午1:41:13
  */
-public class LogTest extends AndroidTestCase {
+@RunWith(AndroidJUnit4.class)
+public class LogTest {
 
     public void testThrowable() {
         Log.d("This is a throwable:{}", new NullPointerException());

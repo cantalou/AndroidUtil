@@ -1,10 +1,12 @@
 package com.cantalou.android.util;
 
-import android.test.AndroidTestCase;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.cantalou.android.util.array.BinarySearchIntArray;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +14,7 @@ import static org.junit.Assert.*;
  * @author cantalou
  * @date 2016年2月29日 上午10:54:50
  */
+@RunWith(AndroidJUnit4.class)
 public class BinarySearchIntArrayTest{
 
     @Test
@@ -22,7 +25,7 @@ public class BinarySearchIntArrayTest{
         array.put(3);
         array.put(4);
         array.put(1);
-        assertEquals(4, array.size());
+        Assert.assertEquals(4, array.size());
         assertTrue(array.contains(1));
         assertTrue(array.contains(4));
         assertTrue(!array.contains(5));
