@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * @author LinZhiWei
  * @date 2015年07月08日 14:59
  * <p/>
- * Copyright (c) 2015年, 4399 Network CO.ltd. All Rights Reserved.
+ * Copyright (c) 2015年,  Network CO.ltd. All Rights Reserved.
  */
 public class DeviceMatchManager extends ActivityLifecycleCallbacksAdapter {
     private ArrayList<Matcher> beforeOnCreateList = new ArrayList<Matcher>();
