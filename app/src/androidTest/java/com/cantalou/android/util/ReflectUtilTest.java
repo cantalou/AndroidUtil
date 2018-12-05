@@ -15,7 +15,7 @@ import static junit.framework.Assert.assertEquals;
  * @author LinZhiWei
  * @date 2017年04月14日 13:47
  * <p>
- * Copyright (c) 2017年, 4399 Network CO.ltd. All Rights Reserved.
+ * Copyright (c) 2017年,  Network CO.ltd. All Rights Reserved.
  */
 public class ReflectUtilTest {
 
