@@ -14,7 +14,7 @@ import com.cantalou.android.util.StringUtils;
  * @author LinZhiWei
  * @date 2016年02月24日 14:09
  *
- * Copyright (c) 2016年, 4399 Network CO.ltd. All Rights Reserved.
+ * Copyright (c) 2016年,  Network CO.ltd. All Rights Reserved.
  */
 public class BuildPattern
 {
